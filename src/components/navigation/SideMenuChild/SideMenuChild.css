@@ -1,0 +1,49 @@
+/* ==========================================================================
+   SideMenuChild — Figma "사이드메뉴_하위메뉴"
+   - 높이 30px은 Figma 값 그대로 (해당 토큰 없음)
+   - 비활성화 글자색: Figma는 Text_under(#888780, 대비 3.6:1)이지만
+     PRD 5.4(4.5:1 이상)를 지키기 위해 Text_address(#5f5e5a)로 변경
+   ========================================================================== */
+
+/* 비활성화 */
+.side-menu-child {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  width: 100%;
+  min-height: var(--touch-target);
+  padding-inline: var(--spacing-16);
+  border-radius: var(--radius-8);
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-600);
+  line-height: normal;
+  text-decoration: none;
+}
+
+/* 활성화: 마우스 올림·키보드 포커스 */
+.side-menu-child:hover,
+.side-menu-child:focus-visible {
+  color: var(--color-page-container-text);
+  text-decoration: none;
+}
+
+/* 선택: 현재 페이지 */
+.side-menu-child--current,
+.side-menu-child--current:hover,
+.side-menu-child--current:focus-visible {
+  background-color: var(--color-gnb-lnb-info-back);
+  color: var(--color-gnb-lnb-info-text);
+}
+
+/* ▼ 아이콘을 -90° 돌려 ▶ 모양 (Figma와 동일) */
+.side-menu-child__arrow {
+  transform: rotate(-90deg);
+}
+
+/* 데스크톱: Figma 원래 높이 30px */
+@media (min-width: 768px) {
+  .side-menu-child {
+    min-height: 30px;
+  }
+}

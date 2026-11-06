@@ -1,0 +1,66 @@
+/* ==========================================================================
+   MainBanner — Figma "메인-배너"
+   - 모바일 우선: 기본은 모바일, 768px 이상 데스크탑
+   - 이미지 비율: 모바일 328:184, 데스크탑 1860:598 (Figma 크기 기준)
+   ========================================================================== */
+
+/* ---------- 모바일 ---------- */
+
+.main-banner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--spacing-16);
+}
+
+/* 배너설명 */
+.main-banner__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding-block: var(--spacing-10);
+}
+
+/* 배너제목: Title/Card */
+.main-banner__title {
+  padding-inline: var(--spacing-8);
+  color: var(--color-cards-text);
+  font-size: var(--text-size-18);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-24);
+}
+
+/* 배너내용: Body/Medium */
+.main-banner__info {
+  padding-inline: var(--spacing-8);
+  color: var(--color-cards-text-sub);
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-400);
+  line-height: var(--text-height-26);
+}
+
+/* ---------- 데스크탑 ---------- */
+
+@media (min-width: 768px) {
+  .main-banner {
+    padding: var(--spacing-30);
+  }
+
+  .main-banner__image {
+    aspect-ratio: 1860 / 598;
+  }
+
+  /* 제목: Display */
+  .main-banner__title {
+    padding-inline: 0;
+    font-size: var(--text-size-34);
+    line-height: var(--text-height-44);
+  }
+
+  /* 내용: Body/Large */
+  .main-banner__info {
+    padding-inline: 0;
+    font-size: var(--text-size-19);
+    line-height: var(--text-height-28);
+  }
+}

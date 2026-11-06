@@ -1,0 +1,109 @@
+/* ==========================================================================
+   GroupTourPage — Figma "모바일-세부메뉴(단체 관람 예약)"
+   - 제목 아래 여백 11px, 도슨트 줄 높이 36px은 Figma 값 그대로 (해당 토큰 없음)
+   - 제출 버튼: Figma 모바일 42px → 44px (터치 영역, PRD 5.4)
+   - 768px 이상: 데스크탑 Figma (가로형 입력카드, 가운데 제출 버튼)
+   ========================================================================== */
+
+/* 메인-프로그램모음: 덩어리 사이 8px */
+.group-tour-page__main,
+.group-tour-page__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* 세부페이지제목: Heading/H1/Mobile (24/30 Bold) */
+.group-tour-page__title {
+  padding: var(--spacing-12) var(--spacing-16) 11px;
+  color: var(--color-page-container-text);
+  font-size: var(--text-size-24);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-30);
+}
+
+/* 유의사항 */
+.group-tour-page__notice {
+  padding: 0 var(--spacing-16) var(--spacing-10);
+}
+
+.group-tour-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* 도슨트 선택지: 줄 사이 간격 없이, 좌우 12px */
+.group-tour-page__docent .form-field__body {
+  gap: 0;
+}
+
+.group-tour-page__docent .checkbox {
+  width: 100%;
+  padding-inline: var(--spacing-12);
+}
+
+/* 버튼 영역 */
+.group-tour-page__actions {
+  padding: var(--spacing-10) var(--spacing-16);
+}
+
+.group-tour-page .group-tour-page__submit {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding-block: var(--spacing-12);
+}
+
+/* ---------- 데스크탑: Figma "데스크탑-세부메뉴(단체 관람 예약)" ---------- */
+
+@media (min-width: 768px) {
+  /* 프로그램모음: 여백 24/30, 덩어리 사이 16px */
+  .group-tour-page__main {
+    gap: var(--spacing-16);
+    padding: var(--spacing-24) var(--spacing-30);
+  }
+
+  /* 프로그램-상단메뉴: 아래 8px */
+  .group-tour-page__top {
+    padding-bottom: var(--spacing-8);
+  }
+
+  /* 세부페이지제목: Heading/H1/PC (26/34) */
+  .group-tour-page__title {
+    padding: var(--spacing-12) var(--spacing-16);
+    font-size: var(--text-size-26);
+    line-height: var(--text-height-34);
+  }
+
+  .group-tour-page__form {
+    gap: var(--spacing-16);
+  }
+
+  /* 도슨트: 선택지 가로 배치, 사이 60px (Figma 값, 토큰 없음) */
+  .group-tour-page__docent .form-field__body {
+    align-items: center;
+    gap: 60px;
+  }
+
+  .group-tour-page__docent .form-field__body > * {
+    flex: none;
+  }
+
+  .group-tour-page__docent .checkbox {
+    width: auto;
+    padding-inline: 0;
+  }
+
+  /* 버튼: 가운데, 위아래 28px · 좌우 40px (Figma 버튼 16+12 / 24+16) */
+  .group-tour-page__actions {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .group-tour-page .group-tour-page__submit {
+    width: auto;
+    min-height: auto;
+    padding: 28px 40px;
+  }
+}

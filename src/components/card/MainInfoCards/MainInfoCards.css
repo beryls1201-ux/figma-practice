@@ -1,0 +1,86 @@
+/* ==========================================================================
+   MainInfoCards — Figma "메인-정보카드"
+   - 모바일 우선: 기본은 모바일(1열), 768px 이상 데스크탑(520px 칸, 1920px에서 3열)
+   - 모바일 세부 여백은 Figma 캡처 기준 (좌우 16px)
+   ========================================================================== */
+
+/* ---------- 모바일 ---------- */
+
+.main-info-cards {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* 프로그램-상단메뉴 */
+.main-info-cards__top {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 세부페이지제목: Heading/H1/Mobile (24/30 Bold) */
+.main-info-cards__title {
+  padding: var(--spacing-12) var(--spacing-16);
+  color: var(--color-page-container-text);
+  font-size: var(--text-size-24);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-30);
+}
+
+/* 하위메뉴: 필터 탭 */
+.main-info-cards__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+  padding: var(--spacing-10) var(--spacing-16);
+}
+
+/* 프로그램-정보카드모음 */
+.main-info-cards__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.main-info-cards__item {
+  display: flex;
+}
+
+/* 해당 카드 없음 */
+.main-info-cards__empty {
+  padding: var(--spacing-24) var(--spacing-16);
+  color: var(--color-page-container-text-sub);
+  font-size: var(--text-size-17);
+  line-height: var(--text-height-26);
+}
+
+/* ---------- 데스크탑 ---------- */
+
+@media (min-width: 768px) {
+  .main-info-cards {
+    gap: var(--spacing-30);
+    padding: var(--spacing-24) var(--spacing-30);
+  }
+
+  /* 필터 아래 구분선: Page&Container/Overlay(dimmed) */
+  .main-info-cards__top {
+    padding-bottom: var(--spacing-24);
+    border-bottom: 1px solid var(--color-page-container-overlay-dimmed);
+  }
+
+  /* Heading/H1/PC (26/34 Bold) */
+  .main-info-cards__title {
+    font-size: var(--text-size-26);
+    line-height: var(--text-height-34);
+  }
+
+  /* 카드 칸 520px (카드 500px + 양옆 10px, Figma 값)
+     들어가는 만큼 한 줄에 배치: 1920px 화면 3열, 더 좁으면 2열·1열
+     본문이 520px보다 좁으면 칸이 본문 너비로 줄어듦 (가로 넘침 방지) */
+  .main-info-cards__grid {
+    grid-template-columns: repeat(auto-fill, minmax(0, 520px));
+  }
+
+  .main-info-cards__item {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Design Tokens — Figma 「수원시립미술관포털」 로컬 변수(Variables) + 텍스트 스타일 기준
+   - 이름 규칙: Figma 변수 경로를 영문 kebab-case로 변환
+       예) Page&Container/Text_sub → --color-page-container-text-sub
+   - 1) Primitives 컬렉션 : 원시 컬러·타이포·간격·라운드
+                            (컬러 원시값은 시맨틱 토큰 정의에서만 참조)
+   - 2) Color 컬렉션      : 시맨틱 컬러 (컴포넌트에서는 이것만 사용)
+   - 3) Effect 스타일     : 그림자
+   - 4) 코드 전용 토큰    : Figma에 없는 레이아웃·모션 값
+   - 값은 Figma 값 그대로 (반올림 없음, 타이포만 px → rem 동일 환산)
+   ========================================================================== */
+
+:root {
+  /* ======================================================================
+     1) Primitives — Color
+     ====================================================================== */
+
+  /* Neutral */
+  --neutral-white: #ffffff;
+  --neutral-100: #f1efe8;
+  --neutral-300: #d3d1c7;
+  --neutral-400: #b4b2a9;
+  --neutral-500: #888780;
+  --neutral-600: #5f5e5a;
+  --neutral-700: #444441;
+  --neutral-800: #2c2c2a;
+  --neutral-900: #1f1f1e;
+
+  /* System / Info */
+  --system-info-100: #e6f1fb;
+  --system-info-300: #85b7eb;
+  --system-info-600: #185fa5;
+  --system-info-700: #0c447c;
+
+  /* System / Success */
+  --system-success-100: #e1f5ee;
+  --system-success-600: #1d9e75;
+  --system-success-900: #085041;
+
+  /* System / Error */
+  --system-error-100: #fcebeb;
+  --system-error-500: #e24b4a;
+  --system-error-700: #a32d2d;
+  --system-error-800: #791f1f;
+
+  /* System / Warning */
+  --system-warning-100: #faeeda;
+  --system-warning-500: #ef9f27;
+  --system-warning-800: #633806;
+
+  /* Effect (Figma: #1F1F1E @ 60%, #000000 @ 35%) */
+  --effect-overlay-dimmed: rgb(31 31 30 / 60%);
+  --effect-shadow-modal: rgb(0 0 0 / 35%);
+
+  /* ======================================================================
+     1) Primitives — Typography
+     크기·행간은 Figma px 값을 rem으로 환산 (루트 16px 기준, 값 동일)
+     ====================================================================== */
+
+  /* Font family — Figma 텍스트 스타일 전체가 "Pretendard GOV" 사용 (변수 아님)
+     폰트 파일: src/fonts (fonts.css에서 @font-face로 등록, 400/600/700) */
+  --font-family-base: 'Pretendard GOV', Pretendard,
+    -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo',
+    'Noto Sans KR', 'Malgun Gothic', sans-serif;
+
+  /* Text / Size */
+  --text-size-12: 0.75rem; /* 12px */
+  --text-size-13: 0.8125rem; /* 13px */
+  --text-size-15: 0.9375rem; /* 15px */
+  --text-size-16: 1rem; /* 16px */
+  --text-size-17: 1.0625rem; /* 17px */
+  --text-size-18: 1.125rem; /* 18px */
+  --text-size-19: 1.1875rem; /* 19px */
+  --text-size-20: 1.25rem; /* 20px */
+  --text-size-24: 1.5rem; /* 24px */
+  --text-size-26: 1.625rem; /* 26px */
+  --text-size-34: 2.125rem; /* 34px */
+
+  /* Text / Height (line-height) */
+  --text-height-12: 0.75rem; /* 12px */
+  --text-height-18: 1.125rem; /* 18px */
+  --text-height-24: 1.5rem; /* 24px */
+  --text-height-26: 1.625rem; /* 26px */
+  --text-height-28: 1.75rem; /* 28px */
+  --text-height-30: 1.875rem; /* 30px */
+  --text-height-34: 2.125rem; /* 34px */
+  --text-height-44: 2.75rem; /* 44px */
+
+  /* Text / Weight */
+  --text-weight-400: 400;
+  --text-weight-600: 600;
+  --text-weight-700: 700;
+
+  /* ======================================================================
+     2) Color — Semantic (Figma 별칭(alias) 관계 그대로)
+     ====================================================================== */
+
+  /* Page&Container */
+  --color-page-container-back: var(--neutral-white);
+  --color-page-container-border: var(--neutral-100);
+  --color-page-container-stroke: var(--neutral-300);
+  --color-page-container-text-under: var(--neutral-500);
+  --color-page-container-text-address: var(--neutral-600);
+  --color-page-container-text-sub: var(--neutral-700);
+  --color-page-container-text: var(--neutral-900);
+  --color-page-container-overlay-dimmed: var(--effect-overlay-dimmed);
+
+  /* Buttons */
+  --color-buttons-back: var(--neutral-white);
+  --color-buttons-stroke: var(--neutral-500);
+  --color-buttons-text-sub: var(--neutral-700);
+  --color-buttons-text: var(--neutral-900);
+
+  /* Input Fields */
+  --color-input-fields-back: var(--neutral-white);
+  --color-input-fields-stroke: var(--neutral-500);
+  --color-input-fields-text-sub: var(--neutral-600);
+  --color-input-fields-text: var(--color-buttons-text);
+  --color-input-fields-select-radio: var(--system-info-600);
+  --color-input-fields-special-text: var(--system-error-700);
+
+  /* Cards */
+  --color-cards-back: var(--neutral-white);
+  --color-cards-back-back: var(--neutral-100);
+  --color-cards-stroke: var(--neutral-300);
+  --color-cards-stroke-sub: var(--neutral-500);
+  --color-cards-text-sub: var(--neutral-700);
+  --color-cards-text: var(--neutral-900);
+  --color-cards-tag-back: var(--system-success-100);
+  --color-cards-tag-text: var(--system-success-900);
+
+  /* GNB&LNB */
+  --color-gnb-lnb-text: var(--neutral-900);
+  --color-gnb-lnb-color: var(--system-info-100);
+  --color-gnb-lnb-info-text: var(--system-info-600);
+  --color-gnb-lnb-info-back: var(--system-info-100);
+  --color-gnb-lnb-info-stroke: var(--system-info-300);
+
+  /* Icon */
+  --color-icon-icon-back: var(--neutral-white);
+  --color-icon-icon: var(--system-success-600);
+
+  /* ======================================================================
+     1) Primitives — Spacing (Figma: Spacing/*, 패딩·간격 공용)
+     ====================================================================== */
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-8: 8px;
+  --spacing-10: 10px;
+  --spacing-12: 12px;
+  --spacing-15: 15px;
+  --spacing-16: 16px;
+  --spacing-18: 18px;
+  --spacing-23: 23px;
+  --spacing-24: 24px;
+  --spacing-30: 30px;
+
+  /* ======================================================================
+     1) Primitives — Radius (Figma: Radius/*)
+     ====================================================================== */
+  --radius-2: 2px;
+  --radius-4: 4px;
+  --radius-5: 5px;
+  --radius-8: 8px;
+  --radius-10: 10px;
+  --radius-16: 16px;
+  --radius-18: 18px;
+  --radius-20: 20px;
+
+  /* ======================================================================
+     3) Effect Style — Shadow (Figma: Shadow/Image)
+     ====================================================================== */
+  --shadow-image: 0 0 5px var(--effect-shadow-modal);
+
+  /* ======================================================================
+     4) 코드 전용 토큰 — Figma 변수 아님 (PRD 5.3 · 핸드오프 문서 기준)
+     ====================================================================== */
+
+  /* Layout */
+  --layout-mobile-gutter: 16px;
+  --layout-mobile-content: 328px;
+  --layout-desktop-lnb: 300px;
+  --layout-header-mobile: 54.5px;
+  --layout-header-desktop: 108px;
+
+  /* Notice — 메뉴-유의사항 공지 상자 (Figma는 System/Warning 원시 색을 직접 사용) */
+  --color-notice-back: var(--system-warning-100);
+  --color-notice-stroke: var(--system-warning-500);
+  --color-notice-text: var(--system-warning-800);
+
+  /* Accessibility — 모바일 최소 터치 영역 (PRD 5.4) */
+  --touch-target: 2.75rem; /* 44px */
+
+  /* Motion */
+  --duration-base: 180ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Desktop scale — 데스크탑 비례 축소 비율 (PRD 5.6, B-18)
+     기본값 1. App.jsx가 화면 너비에 맞춰 바꿈: 화면 너비 ÷ 1920, 최소 0.7 · 최대 1
+     768px 이상에서 global.css가 body에 zoom으로 적용 */
+  --page-zoom: 1;
+
+  /* ---------- Breakpoint (참고용: media query에는 변수 사용 불가) ----------
+     mobile  : ~ 767px (기준 360)
+     desktop : 768px ~ (기준 1920, 1920px 미만은 비례 축소 · 최소 70%)
+  ------------------------------------------------------------------------- */
+}

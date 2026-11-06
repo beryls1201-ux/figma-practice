@@ -1,0 +1,47 @@
+/* ==========================================================================
+   ButtonSmall — Figma "Button - Small"
+   - 최소 너비 64px·테두리 2px은 Figma 값 그대로 (해당 토큰 없음)
+   - 모바일에서 최소 터치 영역 44px (PRD 5.4)
+   ========================================================================== */
+
+.button-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  min-height: var(--touch-target);
+  padding: var(--spacing-10) var(--spacing-16);
+  border: 2px solid transparent;
+  border-radius: var(--radius-4);
+  background-color: transparent;
+  color: var(--color-buttons-text);
+  font-family: var(--font-family-base);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-700);
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* filled: 검은 배경 + 흰 글자 */
+.button-small--filled {
+  background-color: var(--color-buttons-text);
+  color: var(--color-buttons-back);
+}
+
+/* outlined: 흰 배경 + 테두리 */
+.button-small--outlined {
+  border-color: var(--color-buttons-stroke);
+  background-color: var(--color-buttons-back);
+}
+
+/* block: 가로 꽉 채움 */
+.button-small--block {
+  width: 100%;
+}
+
+/* 데스크톱: Figma 원래 높이 (터치 영역 보정 해제) */
+@media (min-width: 768px) {
+  .button-small {
+    min-height: auto;
+  }
+}

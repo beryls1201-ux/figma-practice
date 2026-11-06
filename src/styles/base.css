@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Base — HTML 요소 기본 스타일
+   - 색상·폰트는 tokens.css 변수만 사용
+   - 모바일 우선: 기본값은 모바일, 768px 이상에서 데스크톱 값 (PRD 5.6)
+   ========================================================================== */
+
+html {
+  font-family: var(--font-family-base);
+  color: var(--color-page-container-text);
+  background-color: var(--color-page-container-back);
+  letter-spacing: 0;
+}
+
+/* 본문 기본: Figma Body/Medium (17px / 26px, Regular) */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-400);
+  line-height: var(--text-height-26);
+  color: var(--color-page-container-text);
+  background-color: var(--color-page-container-back);
+}
+
+/* ---------- 제목 ---------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--text-weight-700);
+  color: var(--color-page-container-text);
+}
+
+/* h1: Figma Heading/H1/Mobile (24px / 30px) */
+h1 {
+  font-size: var(--text-size-24);
+  line-height: var(--text-height-30);
+}
+
+/* h2: Figma Heading/H2/Mobile·PC (20px / 26px) */
+h2 {
+  font-size: var(--text-size-20);
+  line-height: var(--text-height-26);
+}
+
+/* h3~h6: Figma에 대응 스타일 없음 → 본문 크기 + Bold */
+
+@media (min-width: 768px) {
+  /* h1: Figma Heading/H1/PC (26px / 34px) */
+  h1 {
+    font-size: var(--text-size-26);
+    line-height: var(--text-height-34);
+  }
+}
+
+/* ---------- 링크 ---------- */
+
+a {
+  color: var(--color-page-container-text);
+  text-underline-offset: 0.2em;
+}
+
+/* 마우스 호버·키보드 포커스 시 밑줄 + 색상 변경 (PRD 5.2) */
+a:hover,
+a:focus-visible {
+  color: var(--color-gnb-lnb-info-text);
+  text-decoration: underline;
+}

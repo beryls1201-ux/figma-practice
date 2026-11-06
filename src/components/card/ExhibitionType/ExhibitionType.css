@@ -1,0 +1,31 @@
+/* ==========================================================================
+   ExhibitionType — Figma "전시타입" (Body/Small 15px Regular)
+   - 색상·간격·모서리는 tokens.css 변수만 사용
+   - Family 최소 너비 64px은 Figma 값 그대로 (해당 토큰 없음)
+   ========================================================================== */
+
+/* 기본: Child, Family (초록 계열) */
+.exhibition-type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4) var(--spacing-8);
+  border-radius: var(--radius-8);
+  background-color: var(--color-cards-tag-back);
+  color: var(--color-cards-tag-text);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* Adult: 파랑 계열 */
+.exhibition-type--adult {
+  background-color: var(--color-gnb-lnb-info-back);
+  color: var(--color-gnb-lnb-info-text);
+}
+
+/* Family: 최소 너비 64px */
+.exhibition-type--family {
+  min-width: 64px;
+}

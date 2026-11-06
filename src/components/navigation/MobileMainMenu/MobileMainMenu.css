@@ -1,0 +1,11 @@
+/* MobileMainMenu — Figma "메인메뉴(모바일)" (너비는 부모에 맞춤, Figma 360px) */
+
+.mobile-main-menu {
+  width: 100%;
+  background-color: var(--color-page-container-back);
+}
+
+.mobile-main-menu__list {
+  display: flex;
+  flex-direction: column;
+}

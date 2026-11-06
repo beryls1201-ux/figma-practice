@@ -1,0 +1,79 @@
+/* ==========================================================================
+   MobileMenuGroup — Figma "메뉴-상위메뉴" + "메뉴-하위메뉴"
+   - 테두리 0.5px은 Figma 값 그대로 (해당 토큰 없음)
+   - 회색 글자: Figma Text_under(#888780) → Text_address (PRD 5.4 규칙)
+   - 하위 메뉴 한 줄: Figma 30px(글자 18 + 간격 12) → 44px (모바일 터치 영역)
+   ========================================================================== */
+
+/* ---------- 메뉴-상위메뉴 ---------- */
+
+.mobile-menu-group__parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: var(--spacing-12) var(--spacing-16);
+  border-bottom: 0.5px solid var(--color-page-container-stroke);
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-16);
+  font-weight: var(--text-weight-700);
+  line-height: normal;
+  text-align: left;
+}
+
+/* 펼침·마우스 올림·키보드 포커스: 검정 */
+.mobile-menu-group--expanded .mobile-menu-group__parent,
+.mobile-menu-group__parent:hover,
+.mobile-menu-group__parent:focus-visible {
+  color: var(--color-page-container-text);
+}
+
+/* ▼ → ▲ */
+.mobile-menu-group--expanded .mobile-menu-group__arrow {
+  transform: rotate(180deg);
+}
+
+/* ---------- 메뉴-하위메뉴 ---------- */
+
+.mobile-menu-group__panel {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.5px solid var(--color-page-container-stroke);
+  background-color: var(--color-page-container-border);
+}
+
+.mobile-menu-group__panel[hidden] {
+  display: none;
+}
+
+/* Menu/Mobile/Regular (15px) */
+.mobile-menu-group__link {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding-inline: var(--spacing-16);
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: normal;
+  text-decoration: none;
+}
+
+/* 현재 페이지·마우스 올림·키보드 포커스: 검정 */
+.mobile-menu-group__link--current,
+.mobile-menu-group__link:hover,
+.mobile-menu-group__link:focus-visible {
+  color: var(--color-page-container-text);
+}
+
+.mobile-menu-group__link:hover,
+.mobile-menu-group__link:focus-visible {
+  text-decoration: underline;
+}
+
+/* 포커스 테두리가 배경 밖으로 잘리지 않게 안쪽에 표시 */
+.mobile-menu-group__parent:focus-visible,
+.mobile-menu-group__link:focus-visible {
+  outline-offset: -2px;
+}

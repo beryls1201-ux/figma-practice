@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Breadcrumb — Figma "선택메뉴 현재위치"
+   - 모바일 우선: 기본은 모바일, 768px 이상 데스크탑
+   - 아래 테두리 0.5px은 Figma 값 그대로 (해당 토큰 없음)
+   ========================================================================== */
+
+/* 모바일 */
+.breadcrumb {
+  width: 100%;
+  padding-inline: var(--spacing-16);
+}
+
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+/* 글자 + > 아이콘 */
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.breadcrumb__text {
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.breadcrumb__link {
+  text-decoration: none;
+}
+
+.breadcrumb__link:hover,
+.breadcrumb__link:focus-visible {
+  color: var(--color-page-container-text);
+  text-decoration: underline;
+}
+
+/* 데스크탑 */
+@media (min-width: 768px) {
+  .breadcrumb {
+    padding: var(--spacing-15) var(--spacing-30);
+    border-bottom: 0.5px solid var(--color-page-container-overlay-dimmed);
+  }
+}

@@ -1,0 +1,27 @@
+/* PopupSymbol — Figma "팝업창강조기호" (40px 동그라미) */
+
+.popup-symbol {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-20);
+}
+
+/* 성공: Cards/Tag_text (진한 초록) */
+.popup-symbol--success {
+  background-color: var(--color-cards-tag-text);
+}
+
+/* 오류: Input Fields/Special_text (빨강) */
+.popup-symbol--error {
+  background-color: var(--color-input-fields-special-text);
+}
+
+/* 안쪽 아이콘: 흰색 (Cards/Back) */
+.popup-symbol .icon-swap-large,
+.popup-symbol .icon {
+  color: var(--color-cards-back);
+}

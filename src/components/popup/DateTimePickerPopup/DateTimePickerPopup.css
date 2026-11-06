@@ -1,0 +1,291 @@
+/* ==========================================================================
+   DateTimePickerPopup — Figma "방문일자 & 시간 선택입력 팝업창"
+   - 모바일 우선: 기본은 모바일(328px, 세로), 768px 이상 데스크탑(648px, 가로)
+   - 토큰이 없는 크기·간격은 Figma 값 그대로:
+     너비 324/328/648px, 간격 36/19/49px, 시간 칸 96×70, AM/PM 52×70,
+     날짜 칸 높이 40px, 테두리 0.5px
+   - Figma와 다르게 바꾼 값 (확인 완료된 추천안)
+     · 시간 숫자 35px #1a1a1a → --text-size-34 + --color-cards-text
+     · 요일 Balsamiq Sans 14px → Pretendard --text-size-15
+     · 선택 날짜 모서리 25px → --radius-20 (40px 칸에서 같은 원)
+     · 회색 글자 #888780 → --color-page-container-text-address (PRD 5.4)
+   ========================================================================== */
+
+/* ---------- 전체 틀 ---------- */
+
+.date-time-picker {
+  display: flex;
+  flex-direction: column;
+  width: 328px;
+  max-width: 100%;
+  overflow: hidden;
+  border: 0.5px solid var(--color-cards-stroke-sub);
+  border-radius: var(--radius-4);
+  background-color: var(--color-cards-back);
+}
+
+/* ---------- 머리 영역 ---------- */
+
+.date-time-picker__header {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: var(--spacing-12) var(--spacing-24);
+  border-radius: var(--radius-4) var(--radius-4) 0 0;
+  background-color: var(--color-cards-text);
+  color: var(--color-cards-back);
+}
+
+/* "Select Date & Time": Label (17px Bold) */
+.date-time-picker__title {
+  color: inherit;
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-700);
+  line-height: normal;
+}
+
+/* 선택한 날짜: Heading/H2 (20/26 Bold) */
+.date-time-picker__selected {
+  font-size: var(--text-size-20);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-26);
+}
+
+/* ---------- 본문: 모바일은 세로 ---------- */
+
+.date-time-picker__content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- 달력 ---------- */
+
+.date-time-picker__calendar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  /* 위 여백 20px: 해당 간격 토큰 없음 (Figma 값 그대로) */
+  padding: 20px var(--spacing-12) var(--spacing-16);
+}
+
+.date-time-picker__month-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--spacing-12);
+}
+
+/* "October 2026": Title/Card (18/24 Bold) */
+.date-time-picker__month {
+  color: var(--color-cards-text);
+  font-size: var(--text-size-18);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-24);
+}
+
+/* ‹ › : 아이콘 사이 거리 Figma와 같게 (24 + 49 = 73px) */
+.date-time-picker__nav {
+  display: flex;
+  gap: 29px;
+}
+
+.date-time-picker__nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+  margin-block: -10px;
+  color: var(--color-cards-text);
+}
+
+/* 7칸 격자 */
+.date-time-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-4);
+}
+
+/* 요일 S M T W T F S */
+.date-time-picker__weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  color: var(--color-cards-text-sub);
+  font-size: var(--text-size-15);
+  line-height: var(--text-height-24);
+  text-decoration: none;
+}
+
+/* 날짜: Caption/Regular (15px) */
+.date-time-picker__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--touch-target);
+  border-radius: var(--radius-20);
+  color: var(--color-cards-text);
+  font-size: var(--text-size-15);
+  line-height: normal;
+}
+
+/* 지난 날짜: 회색 (흐리게 하지 않음) */
+.date-time-picker__day:disabled {
+  color: var(--color-page-container-text-address);
+  opacity: 1;
+}
+
+/* 선택한 날짜: 검은 동그라미 + 흰 글자 */
+.date-time-picker__day--selected {
+  background-color: var(--color-cards-text);
+  color: var(--color-cards-back);
+}
+
+/* ---------- 시간 입력 ---------- */
+
+.date-time-picker__time {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-16) var(--spacing-12);
+}
+
+.date-time-picker__time-group {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  padding: 0 var(--spacing-12);
+  border: none;
+}
+
+/* "Enter Time": Label (17px Bold), 회색
+   float: legend를 일반 줄처럼 배치해 fieldset의 gap(19px)이 적용되게 함 */
+.date-time-picker__time-title {
+  float: left;
+  width: 100%;
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-700);
+  line-height: normal;
+}
+
+.date-time-picker__time-input {
+  display: flex;
+  align-items: flex-start;
+}
+
+.date-time-picker__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* 시·분 칸 96 × 70 */
+.date-time-picker__number {
+  width: 96px;
+  height: 70px;
+  border: none;
+  border-radius: var(--radius-4);
+  background-color: var(--color-cards-back-back);
+  color: var(--color-cards-text);
+  font-size: var(--text-size-34);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-30);
+  text-align: center;
+}
+
+/* Hour / Minute: Caption/Regular, 회색 */
+.date-time-picker__unit {
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-15);
+  line-height: normal;
+}
+
+/* ":" 자리 23px (Figma 96 → 119) */
+.date-time-picker__colon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 70px;
+  color: var(--color-cards-text);
+}
+
+/* AM/PM 52 × 70, 앞 간격 13px (Figma 215 → 228) */
+.date-time-picker__period {
+  display: flex;
+  flex-direction: column;
+  width: 52px;
+  height: 70px;
+  margin-left: 13px;
+  overflow: hidden;
+  border: 1px solid var(--color-cards-stroke);
+  border-radius: var(--radius-4);
+  background-color: var(--color-cards-back);
+}
+
+.date-time-picker__period-button {
+  flex: 1;
+  border: 1px solid transparent;
+  border-radius: var(--radius-4);
+  color: var(--color-cards-text);
+  font-size: var(--text-size-20);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-26);
+}
+
+/* 선택한 AM/PM */
+.date-time-picker__period-button--selected {
+  border-color: var(--color-cards-stroke);
+  background-color: var(--color-cards-back-back);
+}
+
+/* Cancel / OK: 오른쪽 정렬, 간격 4px */
+.date-time-picker__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-4);
+}
+
+/* ---------- 데스크탑: 가로 배치 ---------- */
+
+@media (min-width: 768px) {
+  .date-time-picker {
+    width: 648px;
+  }
+
+  .date-time-picker__content {
+    flex-direction: row;
+  }
+
+  .date-time-picker__calendar,
+  .date-time-picker__time {
+    width: 324px;
+  }
+
+  /* 시간 영역은 가운데 정렬 */
+  .date-time-picker__time-group {
+    align-items: center;
+    padding: 0;
+  }
+
+  .date-time-picker__time-title {
+    text-align: center;
+  }
+
+  .date-time-picker__nav {
+    gap: 49px;
+  }
+
+  .date-time-picker__nav-button {
+    min-width: auto;
+    min-height: auto;
+    margin-block: 0;
+  }
+
+  .date-time-picker__day {
+    height: 40px;
+  }
+}

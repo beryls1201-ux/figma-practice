@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Typography — Figma 텍스트 스타일 18종 (클래스명: .text-{스타일명})
+   line-height가 auto인 스타일은 1줄 UI 텍스트용이라 1로 지정
+   ========================================================================== */
+
+.text-display {
+  font-size: var(--text-size-34);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-44);
+}
+
+.text-h1-pc {
+  font-size: var(--text-size-26);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-34);
+}
+
+.text-h1-mobile {
+  font-size: var(--text-size-24);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-30);
+}
+
+.text-h2-pc,
+.text-h2-mobile {
+  font-size: var(--text-size-20);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-26);
+}
+
+.text-title-card {
+  font-size: var(--text-size-18);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-24);
+}
+
+.text-body-large {
+  font-size: var(--text-size-19);
+  font-weight: var(--text-weight-400);
+  line-height: var(--text-height-28);
+}
+
+.text-body-medium {
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-400);
+  line-height: var(--text-height-26);
+}
+
+.text-body-small {
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: 1;
+}
+
+.text-label {
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-700);
+  line-height: 1;
+}
+
+.text-button-large {
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-700);
+  line-height: 1;
+}
+
+.text-button-medium {
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-700);
+  line-height: 1;
+}
+
+.text-menu-pc-bold {
+  font-size: var(--text-size-16);
+  font-weight: var(--text-weight-600);
+  line-height: 1;
+}
+
+.text-menu-pc-under {
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-600);
+  line-height: 1;
+}
+
+.text-menu-mobile-bold {
+  font-size: var(--text-size-16);
+  font-weight: var(--text-weight-700);
+  line-height: 1;
+}
+
+.text-menu-mobile-regular {
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: 1;
+}
+
+.text-caption {
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: 1;
+}
+
+.text-caption-small {
+  font-size: var(--text-size-12);
+  font-weight: var(--text-weight-400);
+  line-height: var(--text-height-12);
+}

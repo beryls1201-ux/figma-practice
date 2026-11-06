@@ -1,0 +1,16 @@
+/* MenuNotice — Figma "메뉴-유의사항" (색: --color-notice-* 토큰) */
+
+.menu-notice {
+  padding: var(--spacing-15) var(--spacing-30);
+}
+
+.menu-notice__box {
+  padding: var(--spacing-12) var(--spacing-18);
+  border: 1px solid var(--color-notice-stroke);
+  border-radius: var(--radius-8);
+  background-color: var(--color-notice-back);
+  color: var(--color-notice-text);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: normal;
+}

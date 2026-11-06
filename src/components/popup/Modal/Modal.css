@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Modal — 팝업 틀 (<dialog>)
+   - 뒤 배경: Page&Container/Overlay(dimmed)
+   - 화면 가장자리 여백: 모바일 거터(16px)
+   ========================================================================== */
+
+.modal {
+  max-width: calc(100% - var(--layout-mobile-gutter) * 2);
+  max-height: calc(100% - var(--layout-mobile-gutter) * 2);
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.modal::backdrop {
+  background-color: var(--color-page-container-overlay-dimmed);
+}

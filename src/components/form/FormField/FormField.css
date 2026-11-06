@@ -1,0 +1,72 @@
+/* ==========================================================================
+   FormField — Figma "입력메뉴" (입력제목 + 정보입력창)
+   - 모바일: 항목 이름 위, 입력칸 아래 (세로)
+   - 768px 이상: Figma 데스크탑 "입력카드" — 왼쪽 항목 이름, 오른쪽 입력칸 (가로)
+     칸 비율 301 : 1259 (Figma 1560px 기준), 입력 줄 높이 75px, 아래 구분선
+   ========================================================================== */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  border: none;
+}
+
+/* 입력제목: Label (17px Bold), 아래 10px */
+.form-field__title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  float: left;
+  width: 100%;
+  padding: 0 var(--spacing-16) var(--spacing-10);
+  color: var(--color-input-fields-text);
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-700);
+  line-height: normal;
+}
+
+/* 필수 표시 ⁕ */
+.form-field__required {
+  color: var(--color-input-fields-special-text);
+}
+
+/* 정보입력창: 아래 12px, 입력칸 사이 12px */
+.form-field__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  clear: both;
+  padding: 0 var(--spacing-16) var(--spacing-12);
+}
+
+/* ---------- 데스크탑: 입력카드 (가로형) ---------- */
+
+@media (min-width: 768px) {
+  .form-field {
+    display: grid;
+    grid-template-columns: minmax(0, 301fr) minmax(0, 1259fr);
+    align-items: center;
+    padding-bottom: var(--spacing-24);
+    border-bottom: 1px solid var(--color-page-container-overlay-dimmed);
+  }
+
+  /* float는 유지: fieldset의 legend가 일반 칸(grid 항목)으로 배치되게 함 */
+  .form-field__title {
+    padding: 0 var(--spacing-16);
+  }
+
+  .form-field__body {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--spacing-16);
+    min-height: 75px;
+    padding: 0 var(--spacing-16);
+  }
+
+  .form-field__body > * {
+    flex: 1;
+    min-width: 0;
+  }
+}

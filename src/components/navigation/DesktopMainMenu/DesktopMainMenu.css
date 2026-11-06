@@ -1,0 +1,80 @@
+/* ==========================================================================
+   DesktopMainMenu — Figma "메인메뉴(데스크탑)"
+   - 탭·열 너비: Figma 232.5px, 양 끝 정렬 (공간이 부족하면 같은 비율로 줄어듦)
+   - 하위 메뉴 회색 글자: Figma Text_under(#888780) → Text_address (PRD 5.4 규칙)
+   ========================================================================== */
+
+.desktop-main-menu {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-page-container-back);
+}
+
+/* ---------- 헤더-상단메뉴-접힘: 대메뉴 탭 ---------- */
+
+.desktop-main-menu__tabs {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--spacing-30);
+  border-bottom: 1px solid var(--color-page-container-overlay-dimmed);
+}
+
+.desktop-main-menu__tab {
+  flex: 0 1 232.5px;
+  min-width: 0;
+}
+
+/* ---------- 헤더-상단메뉴-펼침 ---------- */
+
+/* 아래 내용 위에 겹쳐서, 불투명 흰 배경 (PRD 5.4) */
+.desktop-main-menu__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background-color: var(--color-page-container-back);
+  border-bottom: 1px solid var(--color-page-container-overlay-dimmed);
+}
+
+.desktop-main-menu__panel[hidden] {
+  display: none;
+}
+
+/* Tabs: 7열 (탭과 같은 칸) */
+.desktop-main-menu__columns {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--spacing-30);
+  border-bottom: 1px solid var(--color-page-container-overlay-dimmed);
+}
+
+.desktop-main-menu__column {
+  display: flex;
+  flex: 0 1 232.5px;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  min-width: 0;
+  padding: var(--spacing-16) var(--spacing-18);
+}
+
+/* Caption/Regular (15px) */
+.desktop-main-menu__link {
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: normal;
+  text-decoration: none;
+}
+
+/* 현재 페이지: Figma Text_sub */
+.desktop-main-menu__link--current {
+  color: var(--color-page-container-text-sub);
+}
+
+/* 마우스 올림·키보드 포커스: 검정 + 밑줄 */
+.desktop-main-menu__link:hover,
+.desktop-main-menu__link:focus-visible {
+  color: var(--color-page-container-text);
+  text-decoration: underline;
+}

@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Button — Figma node 159:3803
+   - tokens.css 변수만 사용
+   - 모바일 우선: 모바일에서 최소 터치 영역 44px (PRD 5.4)
+   ========================================================================== */
+
+/* 기본(선택 안 됨): 테두리 + 보조 글자색 */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);
+  padding: var(--spacing-10) var(--spacing-16);
+  border: 1px solid var(--color-buttons-stroke);
+  border-radius: var(--radius-18);
+  background-color: transparent;
+  color: var(--color-buttons-text-sub);
+  font-family: var(--font-family-base);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: normal;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+/* 선택됨: 검은 배경 + 흰 글자 (테두리는 투명하게 두어 크기 유지) */
+.button--selected {
+  border-color: transparent;
+  background-color: var(--color-buttons-text);
+  color: var(--color-buttons-back);
+}
+
+/* 짧은 글자용 넓은 여백 ("All") */
+.button--wide {
+  padding-inline: var(--spacing-23);
+}
+
+/* 큰 버튼: Figma "버튼" Apply (높이 50px, Button/Medium Bold 15px) */
+.button--large {
+  min-height: 50px;
+  padding-block: var(--spacing-12);
+  font-weight: var(--text-weight-700);
+}
+
+/* 데스크톱: Figma 원래 높이 (터치 영역 보정 해제) */
+@media (min-width: 768px) {
+  .button {
+    min-height: auto;
+  }
+
+  .button--large {
+    min-height: 50px;
+  }
+}

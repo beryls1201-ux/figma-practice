@@ -1,0 +1,18 @@
+/* ==========================================================================
+   Entry stylesheet — 순서 중요
+   tokens → fonts → reset → base → typography → global
+   - tokens     : 디자인 토큰 (CSS 변수)
+   - fonts      : Pretendard GOV 웹폰트 등록 (@font-face)
+   - reset      : 브라우저 기본 스타일 초기화
+   - base       : HTML 요소 기본 스타일 (body, 제목, 링크)
+   - typography : 텍스트 스타일 클래스 (.text-*)
+   - global     : 전역 유틸리티 (.sr-only, .container 등)
+   컴포넌트 스타일은 각 컴포넌트 폴더의 .css 파일에서 import
+   ========================================================================== */
+
+@import './styles/tokens.css';
+@import './styles/fonts.css';
+@import './styles/reset.css';
+@import './styles/base.css';
+@import './styles/typography.css';
+@import './styles/global.css';

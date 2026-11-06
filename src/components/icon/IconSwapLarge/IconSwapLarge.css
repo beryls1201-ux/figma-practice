@@ -1,0 +1,30 @@
+/* IconSwapLarge — Figma "아이콘변경2" (40px 둥근 틀) */
+
+.icon-swap-large {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-20);
+  color: var(--color-icon-icon);
+}
+
+/* 안쪽 아이콘: 틀 너비 전체, 높이 24px (Figma inset 20% 0) */
+.icon-swap-large__icon {
+  width: 100%;
+  height: var(--text-height-24);
+}
+
+/* 체크 글자 30px — 해당 글자 크기 토큰이 없어 행간 토큰(30px)을 사용 */
+.icon-swap-large__icon.icon--check {
+  font-size: var(--text-height-30);
+  line-height: var(--text-height-24);
+}
+
+/* 느낌표 글자 24px (Figma 아이콘-10 in 아이콘변경2) */
+.icon-swap-large__icon.icon--exclamation {
+  font-size: var(--text-size-24);
+  line-height: var(--text-height-24);
+}

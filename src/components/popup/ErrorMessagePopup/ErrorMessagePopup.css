@@ -1,0 +1,100 @@
+/* ==========================================================================
+   ErrorMessagePopup — Figma "에러메시지 팝업창"
+   - 모바일 우선: 기본은 모바일(340px), 768px 이상 데스크탑(600px)
+   - 너비·테두리 0.5px·목록 들여쓰기 25.5px은 Figma 값 그대로 (해당 토큰 없음)
+   ========================================================================== */
+
+/* ---------- 모바일 ---------- */
+
+.error-message-popup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  width: 340px;
+  max-width: 100%;
+  overflow: hidden;
+  border: 0.5px solid var(--color-cards-stroke);
+  border-radius: var(--radius-16);
+  background-color: var(--color-cards-back);
+}
+
+.error-message-popup__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-24);
+  padding: var(--spacing-24) var(--spacing-24) var(--spacing-12);
+}
+
+/* 기호+메인메시지 */
+.error-message-popup__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8);
+  width: 100%;
+}
+
+/* 제목: Heading/H2 */
+.error-message-popup__title {
+  color: var(--color-cards-text);
+  font-size: var(--text-size-20);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-26);
+  text-align: center;
+}
+
+/* 안내 문구: Body/Medium, 모바일 왼쪽 정렬 */
+.error-message-popup__message {
+  width: 100%;
+  color: var(--color-cards-text-sub);
+  font-size: var(--text-size-17);
+  line-height: var(--text-height-26);
+}
+
+/* 오류 목록 */
+.error-message-popup__errors {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  width: 100%;
+  font-size: var(--text-size-17);
+  line-height: var(--text-height-26);
+}
+
+.error-message-popup__error {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 항목 이름: 점(•) 목록 */
+.error-message-popup__field {
+  display: list-item;
+  margin-left: 25.5px;
+  color: var(--color-cards-text);
+  list-style: disc;
+}
+
+/* 항목 설명 */
+.error-message-popup__error-text {
+  padding-left: var(--spacing-24);
+  color: var(--color-cards-text-sub);
+}
+
+/* 버튼 영역 */
+.error-message-popup__actions {
+  padding: var(--spacing-8) var(--spacing-24) var(--spacing-24);
+}
+
+/* ---------- 데스크탑 ---------- */
+
+@media (min-width: 768px) {
+  .error-message-popup {
+    width: 600px;
+  }
+
+  /* 안내 문구 가운데 정렬 */
+  .error-message-popup__message {
+    text-align: center;
+  }
+}

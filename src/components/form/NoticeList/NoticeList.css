@@ -1,0 +1,18 @@
+/* NoticeList — Figma "유의사항문구" (점 들여쓰기 22.5px은 Figma 값 그대로) */
+
+.notice-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-8);
+  border-radius: var(--radius-18);
+  color: var(--color-gnb-lnb-info-text);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: normal;
+}
+
+.notice-list__item {
+  margin-left: 22.5px;
+  list-style: disc;
+}

@@ -1,0 +1,34 @@
+/* ==========================================================================
+   SideMenuParent — Figma "사이드메뉴_상위메뉴"
+   - 비활성화 글자색: Figma는 Text_under(#888780, 대비 3.6:1)이지만
+     PRD 5.4(4.5:1 이상)를 지키기 위해 Text_address(#5f5e5a)로 변경
+   ========================================================================== */
+
+/* 비활성화 */
+.side-menu-parent {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: var(--spacing-8);
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-16);
+  font-weight: var(--text-weight-600);
+  line-height: normal;
+  text-decoration: none;
+}
+
+/* 활성화: 마우스 올림·키보드 포커스·현재 메뉴 */
+.side-menu-parent:hover,
+.side-menu-parent:focus-visible,
+.side-menu-parent--current {
+  color: var(--color-page-container-text);
+  text-decoration: none;
+}
+
+/* 데스크톱: Figma 원래 높이 (터치 영역 보정 해제) */
+@media (min-width: 768px) {
+  .side-menu-parent {
+    min-height: auto;
+  }
+}

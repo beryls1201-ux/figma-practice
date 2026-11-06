@@ -1,0 +1,26 @@
+/* HomePage — Figma "모바일-메인" / "데크스탑-메인"
+   이 화면의 배너는 모바일 위아래 여백 12px (Figma 인스턴스 값, 컴포넌트 기본은 16px) */
+
+.home-page .main-banner {
+  padding-block: var(--spacing-12);
+}
+
+/* 헤더: 모바일은 MobileHeader, 768px 이상은 DesktopHeader */
+.home-page__desktop-header {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .home-page__mobile-header {
+    display: none;
+  }
+
+  .home-page__desktop-header {
+    display: block;
+  }
+
+  /* 데스크탑: MainBanner 기본 여백(30px)으로 */
+  .home-page .main-banner {
+    padding-block: var(--spacing-30);
+  }
+}

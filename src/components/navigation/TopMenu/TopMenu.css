@@ -1,0 +1,36 @@
+/* ==========================================================================
+   TopMenu — Figma "상위메뉴"
+   - 높이 50px은 Figma 값 그대로 (해당 토큰 없음)
+   - 논클릭 글자색: Figma는 Buttons/Stroke(#888780, 대비 3.6:1)이지만
+     PRD 5.4(4.5:1 이상)를 지키기 위해 Text_address(#5f5e5a)로 변경
+   ========================================================================== */
+
+/* 논클릭 */
+.top-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  padding: var(--spacing-16) var(--spacing-8);
+  border-bottom: 1px solid transparent;
+  color: var(--color-page-container-text-address);
+  font-size: var(--text-size-16);
+  font-weight: var(--text-weight-600);
+  line-height: normal;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* 마우스 올림·키보드 포커스: 검정 글자 */
+.top-menu:hover,
+.top-menu:focus-visible {
+  color: var(--color-page-container-text);
+  text-decoration: none;
+}
+
+/* 클릭(현재 메뉴): 검정 글자 + 아래 밑줄 */
+.top-menu--current {
+  border-bottom-color: var(--color-page-container-text);
+  color: var(--color-page-container-text);
+}

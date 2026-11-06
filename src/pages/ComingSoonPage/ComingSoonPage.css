@@ -1,0 +1,42 @@
+/* ComingSoonPage — 준비 중 안내 (Figma 없음, 기존 토큰·글자 스타일만 사용) */
+
+.coming-soon-page__main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-12);
+  padding: var(--spacing-24) var(--spacing-16);
+}
+
+/* Heading/H1 (모바일 24/30, 데스크탑 26/34) */
+.coming-soon-page__title {
+  color: var(--color-page-container-text);
+  font-size: var(--text-size-24);
+  font-weight: var(--text-weight-700);
+  line-height: var(--text-height-30);
+}
+
+/* Body/Medium */
+.coming-soon-page__body {
+  color: var(--color-page-container-text-sub);
+  font-size: var(--text-size-17);
+  line-height: var(--text-height-26);
+}
+
+.coming-soon-page__link {
+  color: var(--color-gnb-lnb-info-text);
+  font-size: var(--text-size-17);
+  line-height: var(--text-height-26);
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .coming-soon-page__main {
+    padding: var(--spacing-24) var(--spacing-30);
+  }
+
+  .coming-soon-page__title {
+    font-size: var(--text-size-26);
+    line-height: var(--text-height-34);
+  }
+}

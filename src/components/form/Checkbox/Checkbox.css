@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Checkbox — Figma "체크박스" (Body/Medium 17px / 26px Regular)
+   - 색상·간격은 tokens.css 변수만 사용
+   - 모바일에서 최소 터치 영역 44px (PRD 5.4)
+   ========================================================================== */
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  min-height: var(--touch-target);
+  color: var(--color-input-fields-text-sub);
+  font-size: var(--text-size-17);
+  font-weight: var(--text-weight-400);
+  line-height: var(--text-height-26);
+  cursor: pointer;
+}
+
+.checkbox__text {
+  white-space: nowrap;
+}
+
+/* 키보드 포커스: 숨긴 체크박스 대신 동그라미에 표시 */
+.checkbox__input:focus-visible + .checkbox__mark {
+  outline: 2px solid var(--color-input-fields-select-radio);
+  outline-offset: 2px;
+  border-radius: var(--radius-10);
+}
+
+/* 비활성 */
+.checkbox:has(.checkbox__input:disabled) {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* 데스크톱: Figma 원래 높이 26px */
+@media (min-width: 768px) {
+  .checkbox {
+    min-height: auto;
+  }
+}

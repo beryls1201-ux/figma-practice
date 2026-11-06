@@ -1,0 +1,32 @@
+/* ==========================================================================
+   TextInput — Figma "정보입력창" 입력칸
+   - 모바일: 높이 44px(터치 영역, PRD 5.4), 글자 15px (Figma 모바일 36px)
+   - 768px 이상: Figma 데스크탑 — 높이 75px, 글자 Body/Medium 17/26, 좌우 28px(16+12)
+   ========================================================================== */
+
+.text-input {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: 0 var(--spacing-16);
+  border: 1px solid var(--color-input-fields-stroke);
+  border-radius: var(--radius-18);
+  background-color: var(--color-input-fields-back);
+  color: var(--color-input-fields-text);
+  font-size: var(--text-size-15);
+  font-weight: var(--text-weight-400);
+  line-height: normal;
+}
+
+.text-input::placeholder {
+  color: var(--color-input-fields-text-sub);
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .text-input {
+    min-height: 75px;
+    padding: 0 28px;
+    font-size: var(--text-size-17);
+    line-height: var(--text-height-26);
+  }
+}

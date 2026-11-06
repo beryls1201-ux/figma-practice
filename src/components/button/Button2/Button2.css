@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Button2 — Figma "버튼2" (Menu/Mobile/Bold 16px)
+   - 색상·간격·모서리는 tokens.css 변수만 사용
+   - 높이 34px·테두리 0.5px은 Figma 값 그대로 (해당 토큰 없음)
+   - 모바일 터치 영역 44px (PRD 5.4): 보이는 높이는 34px 그대로 두고,
+     누르는 영역만 위아래 5px씩 넓힘 (LanguageSelect와 같은 방식 → 헤더에서 높이가 맞음)
+   ========================================================================== */
+
+.button2 {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  height: 34px;
+  padding: var(--spacing-8) var(--spacing-16);
+  border: 0.5px solid var(--color-buttons-stroke);
+  border-radius: var(--radius-8);
+  background-color: transparent;
+  color: var(--color-buttons-text);
+  font-family: var(--font-family-base);
+  font-size: var(--text-size-16);
+  font-weight: var(--text-weight-700);
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* 모바일: 누르는 영역 44px (34 + 위아래 5) */
+.button2::before {
+  content: '';
+  position: absolute;
+  inset: -5px 0;
+}
+
+/* 데스크톱: 누르는 영역 보정 해제 */
+@media (min-width: 768px) {
+  .button2::before {
+    content: none;
+  }
+}

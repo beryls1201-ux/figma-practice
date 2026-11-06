@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Logo — Figma "로고"
+   - 높이(34/36px)·이미지 비율은 Figma 값 그대로 (해당 토큰 없음)
+   - 모바일 우선: 기본은 모바일 모양, 768px 이상 데스크탑 모양
+   ========================================================================== */
+
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: var(--spacing-16);
+}
+
+/* ---------- 모바일: 이미지 왼쪽(심볼)만 보이게 자름 ---------- */
+
+.logo__frame {
+  position: relative;
+  display: block;
+  height: 34px;
+  aspect-ratio: 64 / 30;
+  overflow: hidden;
+}
+
+.logo__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 195.31%;
+  max-width: none;
+  height: 100%;
+}
+
+/* ---------- 데스크탑: 전체 이미지 150 × 36 ---------- */
+
+.logo--desktop .logo__frame {
+  width: 150px;
+  height: 36px;
+  aspect-ratio: auto;
+}
+
+.logo--desktop .logo__image {
+  position: static;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .logo--auto .logo__frame {
+    width: 150px;
+    height: 36px;
+    aspect-ratio: auto;
+  }
+
+  .logo--auto .logo__image {
+    position: static;
+    width: 100%;
+    object-fit: cover;
+  }
+}
