@@ -12,7 +12,7 @@
  */
 import image01 from '../assets/images/image-01.jpg';
 import image02 from '../assets/images/image-02.jpg';
-import image09 from '../assets/images/image-09.jpg';
+import image09 from '../assets/images/image-09-s.jpg';
 
 export const bannersEn = [
   {
