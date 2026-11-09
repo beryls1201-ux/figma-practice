@@ -14,7 +14,9 @@ import MenuPage from './pages/MenuPage/MenuPage'
 import ProgramsPage from './pages/ProgramsPage/ProgramsPage'
 import GroupTourPage from './pages/GroupTourPage/GroupTourPage'
 import ComingSoonPage from './pages/ComingSoonPage/ComingSoonPage'
+import Footer from './components/layout/Footer/Footer'
 import { menuEn, menuKo } from './data/menu'
+import { policyLinks, snsLinks, telHref } from './data/footer'
 import { LanguageContext } from './i18n/languageContext'
 import useLanguage from './i18n/useLanguage'
 import { LANGUAGES, translate } from './i18n/strings'
@@ -102,10 +104,32 @@ function LanguageLayout() {
             onClose={() => setMenuOpen(false)}
           />
         ) : (
-          <Outlet context={{ openMenu: () => setMenuOpen(true) }} />
+          <>
+            <Outlet context={{ openMenu: () => setMenuOpen(true) }} />
+            {/* 모든 화면 공통 푸터 (모바일 메뉴 화면에서는 숨김) */}
+            <SiteFooter t={value.t} />
+          </>
         )}
       </div>
     </LanguageContext.Provider>
+  )
+}
+
+// 푸터: 데이터(src/data/footer.js)의 문구 키를 현재 언어 글자로 바꿔 넘김
+function SiteFooter({ t }) {
+  return (
+    <Footer
+      policyLinks={policyLinks.map((link) => ({ ...link, label: t(link.labelKey) }))}
+      snsLinks={snsLinks.map((sns) => ({ ...sns, label: t(sns.labelKey) }))}
+      policyLabel={t('footerPolicyLabel')}
+      snsLabel={t('footerSnsLabel')}
+      newWindowText={t('newWindow')}
+      address={t('footerAddress')}
+      tel={t('footerTel')}
+      telHref={telHref}
+      notice={t('footerNotice')}
+      copyright={t('footerCopyright')}
+    />
   )
 }
 

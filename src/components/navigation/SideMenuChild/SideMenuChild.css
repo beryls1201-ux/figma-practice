@@ -36,6 +36,14 @@
   color: var(--color-gnb-lnb-info-text);
 }
 
+/* 사용 불가 메뉴: 흐린 글자, 마우스를 올려도 그대로 */
+.side-menu-child--disabled,
+.side-menu-child--disabled:hover {
+  color: var(--color-page-container-text-under);
+  opacity: 1; /* global.css의 [aria-disabled] 반투명 끄기 (글자색으로만 흐리게) */
+  cursor: default;
+}
+
 /* ▼ 아이콘을 -90° 돌려 ▶ 모양 (Figma와 동일) */
 .side-menu-child__arrow {
   transform: rotate(-90deg);

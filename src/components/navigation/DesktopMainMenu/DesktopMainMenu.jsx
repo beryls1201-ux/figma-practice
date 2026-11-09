@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import TopMenu from '../TopMenu/TopMenu';
 import MenuNotice from '../MenuNotice/MenuNotice';
+import { firstEnabledHref } from '../../../data/menu';
 import './DesktopMainMenu.css';
 
 /**
@@ -74,13 +75,16 @@ export default function DesktopMainMenu({
       <ul className="desktop-main-menu__tabs">
         {items.map((item) => {
           const isCurrentSection = item.id === currentSectionId;
+          const href = firstEnabledHref(item);
           return (
             <li key={item.id} className="desktop-main-menu__tab">
               <TopMenu
                 ref={(node) => {
                   tabRefs.current[item.id] = node;
                 }}
-                href={item.children?.[0]?.href ?? '#'}
+                // 이동할 수 있는 하위 메뉴가 없으면 눌러도 이동하지 않음 (메가메뉴 열기만)
+                href={href ?? '#'}
+                onClick={href ? undefined : (event) => event.preventDefault()}
                 active={(open && activeId === item.id) || isCurrentSection}
                 aria-current={isCurrentSection ? 'true' : undefined}
                 onMouseEnter={() => show(item.id)}
@@ -107,11 +111,15 @@ export default function DesktopMainMenu({
                 const isCurrent = child.id === currentId;
                 return (
                   <li key={child.id}>
+                    {/* 비활성 메뉴: href가 없어 눌러도 이동하지 않음 */}
                     <a
-                      href={child.href}
+                      href={child.disabled ? undefined : child.href}
+                      role={child.disabled ? 'link' : undefined}
+                      aria-disabled={child.disabled ? 'true' : undefined}
                       className={[
                         'desktop-main-menu__link',
                         isCurrent && 'desktop-main-menu__link--current',
+                        child.disabled && 'desktop-main-menu__link--disabled',
                       ]
                         .filter(Boolean)
                         .join(' ')}

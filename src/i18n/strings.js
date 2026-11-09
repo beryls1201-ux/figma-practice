@@ -46,6 +46,31 @@ const CODE_STRINGS = {
   comingSoonBody: { en: 'This page is being prepared.', ko: '이 페이지는 준비 중입니다.' },
   // Figma 예시 "25 visitors" / "방문객 25명"과 같은 형식
   visitorsCount: { en: '{n} visitors', ko: '방문객 {n}명' },
+  // 푸터 (실제 사이트 하단 기준, 영문 번역안 승인 2026-11-09)
+  footerPolicyLabel: { en: 'Site policies', ko: '이용 정책' },
+  footerPrivacy: { en: 'Privacy Policy', ko: '개인정보처리방침' },
+  footerTerms: { en: 'Terms of Use', ko: '이용약관' },
+  footerEmailRefusal: { en: 'Refusal of Unauthorized Email Collection', ko: '이메일무단수집거부' },
+  footerSnsLabel: { en: 'Social media', ko: '소셜 미디어' },
+  snsInstagram: { en: 'Instagram', ko: '인스타그램' },
+  snsFacebook: { en: 'Facebook', ko: '페이스북' },
+  snsYoutube: { en: 'YouTube', ko: '유튜브' },
+  snsBlog: { en: 'Naver Blog', ko: '네이버 블로그' },
+  snsKakao: { en: 'KakaoTalk Channel', ko: '카카오톡 채널' },
+  newWindow: { en: '(opens in a new window)', ko: '(새 창)' },
+  footerAddress: {
+    en: '833 Jeongjo-ro, Paldal-gu, Suwon-si, Gyeonggi-do (16252)',
+    ko: '(우 16252) 경기도 수원시 팔달구 정조로 833 (신풍동)',
+  },
+  footerTel: { en: 'TEL. 031-5191-3800', ko: 'TEL. 031-5191-3800' },
+  footerNotice: {
+    en: 'No content on this website may be reproduced without permission.',
+    ko: '홈페이지의 모든 내용들은 무단 복제가 불가합니다.',
+  },
+  footerCopyright: {
+    en: 'Copyright © 2019 Suwon Museum of Art. All rights reserved.',
+    ko: 'Copyright © 2019 Suwon Museum of Art. All rights reserved.',
+  },
 };
 
 export const STRINGS = { ...figmaStrings, ...CODE_STRINGS };

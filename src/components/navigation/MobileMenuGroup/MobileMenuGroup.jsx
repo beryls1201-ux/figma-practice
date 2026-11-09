@@ -7,7 +7,7 @@ import './MobileMenuGroup.css';
  *   상위메뉴: 누르면 하위 메뉴가 펼쳐짐 (닫힘: 회색 + ▼ / 펼침: 검정 + ▲)
  *   하위메뉴: 베이지 배경의 링크 목록. 현재 페이지만 검정
  *
- * @param {{id, label, children: {id, label, href}[]}} item  대메뉴 하나 (src/data/menu.js 형식)
+ * @param {{id, label, children: {id, label, href, disabled}[]}} item  대메뉴 하나 (src/data/menu.js 형식)
  * @param {boolean} expanded   펼침 여부
  * @param {function} onToggle  상위메뉴를 눌렀을 때
  * @param {string} currentId   현재 페이지의 하위 메뉴 id (aria-current="page")
@@ -39,11 +39,15 @@ export default function MobileMenuGroup({ item, expanded = false, onToggle, curr
           const isCurrent = child.id === currentId;
           return (
             <li key={child.id}>
+              {/* 비활성 메뉴: href가 없어 눌러도 이동하지 않음 */}
               <a
-                href={child.href}
+                href={child.disabled ? undefined : child.href}
+                role={child.disabled ? 'link' : undefined}
+                aria-disabled={child.disabled ? 'true' : undefined}
                 className={[
                   'mobile-menu-group__link',
                   isCurrent && 'mobile-menu-group__link--current',
+                  child.disabled && 'mobile-menu-group__link--disabled',
                 ]
                   .filter(Boolean)
                   .join(' ')}

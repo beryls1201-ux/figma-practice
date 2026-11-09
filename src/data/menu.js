@@ -9,9 +9,27 @@
  *   href      이동 주소 (언어 없이 '/대메뉴id/하위메뉴id')
  *             화면에서는 src/i18n/paths.js의 localizeMenu로 '/en/…', '/ko/…'를 붙여 씀
  *   children  하위 메뉴 목록
+ *   disabled  true면 비활성 메뉴 (흐린 글자, 눌러도 이동하지 않음)
+ *             ENABLED_MENU_IDS에 없는 하위 메뉴는 자동으로 true가 됨
  */
 
-export const menuEn = [
+// 지금 이동할 수 있는 하위 메뉴 (나머지는 모두 비활성)
+const ENABLED_MENU_IDS = ['group-tour', 'programs-workshops'];
+
+// 각 하위 메뉴에 disabled 표시를 붙임 (영문·국문 같은 규칙)
+const markDisabled = (menu) =>
+  menu.map((item) => ({
+    ...item,
+    children: item.children.map((child) => ({
+      ...child,
+      disabled: !ENABLED_MENU_IDS.includes(child.id),
+    })),
+  }));
+
+// 대메뉴를 눌렀을 때 갈 주소: 이동할 수 있는 첫 하위 메뉴 (없으면 undefined)
+export const firstEnabledHref = (item) => item.children?.find((child) => !child.disabled)?.href;
+
+export const menuEn = markDisabled([
   {
     id: 'visitor-info',
     label: 'Visitor Info',
@@ -77,12 +95,12 @@ export const menuEn = [
       { id: 'northern-gallery', label: 'Suwon Northern Gallery', href: '/about-museum/northern-gallery' },
     ],
   },
-];
+]);
 
 /**
  * 국문 메뉴 — Figma 문구 변수 "Text(Language)" 한국어 모드 기준 (PRD 부록 A와 같음)
  */
-export const menuKo = [
+export const menuKo = markDisabled([
   {
     id: 'visitor-info',
     label: '관람 안내',
@@ -148,4 +166,4 @@ export const menuKo = [
       { id: 'northern-gallery', label: '수원북부전시관', href: '/about-museum/northern-gallery' },
     ],
   },
-];
+]);

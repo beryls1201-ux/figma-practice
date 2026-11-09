@@ -72,6 +72,15 @@
   text-decoration: underline;
 }
 
+/* 비활성 메뉴: 흐린 글자, 마우스를 올려도 그대로 */
+.mobile-menu-group__link--disabled,
+.mobile-menu-group__link--disabled:hover {
+  color: var(--color-page-container-text-under);
+  text-decoration: none;
+  opacity: 1; /* global.css의 [aria-disabled] 반투명 끄기 (글자색으로만 흐리게) */
+  cursor: default;
+}
+
 /* 포커스 테두리가 배경 밖으로 잘리지 않게 안쪽에 표시 */
 .mobile-menu-group__parent:focus-visible,
 .mobile-menu-group__link:focus-visible {

@@ -1,5 +1,6 @@
 import SideMenuParent from '../SideMenuParent/SideMenuParent';
 import SideMenuChild from '../SideMenuChild/SideMenuChild';
+import { firstEnabledHref } from '../../../data/menu';
 import './DesktopSideMenu.css';
 
 /**
@@ -28,11 +29,13 @@ export default function DesktopSideMenu({
       <ul>
         {items.map((item) => {
           const isCurrentSection = item.id === currentSectionId;
+          const href = firstEnabledHref(item);
           return (
             <li key={item.id}>
-              {/* 사이드메뉴_상위메뉴 */}
+              {/* 사이드메뉴_상위메뉴: 이동할 수 있는 첫 하위 메뉴로 (없으면 이동하지 않음) */}
               <SideMenuParent
-                href={item.children?.[0]?.href ?? '#'}
+                href={href ?? '#'}
+                onClick={href ? undefined : (event) => event.preventDefault()}
                 current={isCurrentSection}
                 className="desktop-side-menu__parent"
               >
@@ -44,7 +47,11 @@ export default function DesktopSideMenu({
                 <ul className="desktop-side-menu__children">
                   {item.children.map((child) => (
                     <li key={child.id}>
-                      <SideMenuChild href={child.href} current={child.id === currentId}>
+                      <SideMenuChild
+                        href={child.href}
+                        current={child.id === currentId}
+                        disabled={child.disabled}
+                      >
                         {child.label}
                       </SideMenuChild>
                     </li>

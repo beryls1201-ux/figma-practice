@@ -78,3 +78,12 @@
   color: var(--color-page-container-text);
   text-decoration: underline;
 }
+
+/* 비활성 메뉴: 흐린 글자, 마우스를 올려도 그대로 */
+.desktop-main-menu__link--disabled,
+.desktop-main-menu__link--disabled:hover {
+  color: var(--color-page-container-text-under);
+  text-decoration: none;
+  opacity: 1; /* global.css의 [aria-disabled] 반투명 끄기 (글자색으로만 흐리게) */
+  cursor: default;
+}
