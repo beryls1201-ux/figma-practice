@@ -5,7 +5,7 @@ import './Footer.css';
  *   모바일·데스크탑 모두: SNS 아이콘 / 정책 링크 / 주소·전화 / 저작권을 위에서 아래로 쌓음
  *   데스크탑(768px 이상)은 여백·글자 크기만 커지고, 주소·전화가 한 줄
  *
- * @param {{id, label, href, disabled}[]} policyLinks  정책 링크 (disabled면 흐린 글자, 이동 안 함)
+ * @param {{id, label, href}[]} policyLinks  정책 링크 (새 창)
  * @param {{id, label, href, iconSrc}[]} snsLinks     SNS 링크 (새 창)
  * @param {string} policyLabel  정책 링크 묶음 이름 (화면낭독기용)
  * @param {string} snsLabel     SNS 묶음 이름 (화면낭독기용)
@@ -49,24 +49,17 @@ export default function Footer({
           <ul className="site-footer__policies">
             {policyLinks.map((link) => (
               <li key={link.id}>
-                {link.disabled ? (
-                  // 비활성: href가 없어 눌러도 이동하지 않음
-                  <a role="link" aria-disabled="true" className="site-footer__policy site-footer__policy--disabled">
-                    {link.label}
-                  </a>
-                ) : (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={['site-footer__policy', link.id === 'privacy' && 'site-footer__policy--strong']
-                      .filter(Boolean)
-                      .join(' ')}
-                  >
-                    {link.label}
-                    <span className="sr-only"> {newWindowText}</span>
-                  </a>
-                )}
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={['site-footer__policy', link.id === 'privacy' && 'site-footer__policy--strong']
+                    .filter(Boolean)
+                    .join(' ')}
+                >
+                  {link.label}
+                  <span className="sr-only"> {newWindowText}</span>
+                </a>
               </li>
             ))}
           </ul>

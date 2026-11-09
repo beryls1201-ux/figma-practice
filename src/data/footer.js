@@ -2,7 +2,7 @@
  * 푸터 데이터 — 실제 수원시립미술관 사이트(suma.suwon.go.kr) 하단 기준
  * 화면 글자는 여기 두지 않고 labelKey(문구 키)만 둠 → App.jsx에서 t(labelKey)로 바꿔 넣음
  *
- * policyLinks  정책 링크 (disabled: true면 흐린 글자, 이동하지 않음)
+ * policyLinks  정책 링크 (실제 사이트 푸터에는 개인정보처리방침만 있음)
  * snsLinks     SNS 링크 (새 창으로 열림, 아이콘은 src/assets/images/footer-icon-0N.png)
  */
 import instagramIcon from '../assets/images/footer-icon-01.png';
@@ -18,9 +18,6 @@ export const policyLinks = [
     labelKey: 'footerPrivacy',
     href: 'https://www.suwon.go.kr/sw-www/sw-www_09/sw-www_09_01.jsp',
   },
-  // 약관 원문 화면은 아직 없음 → 비활성
-  { id: 'terms', labelKey: 'footerTerms', disabled: true },
-  { id: 'email-refusal', labelKey: 'footerEmailRefusal', disabled: true },
 ];
 
 export const snsLinks = [

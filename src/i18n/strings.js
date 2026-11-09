@@ -49,8 +49,6 @@ const CODE_STRINGS = {
   // 푸터 (실제 사이트 하단 기준, 영문 번역안 승인 2026-11-09)
   footerPolicyLabel: { en: 'Site policies', ko: '이용 정책' },
   footerPrivacy: { en: 'Privacy Policy', ko: '개인정보처리방침' },
-  footerTerms: { en: 'Terms of Use', ko: '이용약관' },
-  footerEmailRefusal: { en: 'Refusal of Unauthorized Email Collection', ko: '이메일무단수집거부' },
   footerSnsLabel: { en: 'Social media', ko: '소셜 미디어' },
   snsInstagram: { en: 'Instagram', ko: '인스타그램' },
   snsFacebook: { en: 'Facebook', ko: '페이스북' },
