@@ -11,7 +11,6 @@
  *   imageSrcDesktop  데스크탑용 가로형 이미지 (실제 사이트 데스크탑 배너, 없으면 imageSrc)
  *   imageAlt  대체 텍스트. 포스터 내용이 제목과 겹치므로 ''(꾸밈용)
  */
-import image01 from '../assets/images/image-01.jpg';
 import image02 from '../assets/images/image-02.jpg';
 import image01Wide from '../assets/images/image-01-wide.gif';
 import image02Wide from '../assets/images/image-02-wide.jpg';
@@ -29,8 +28,7 @@ export const bannersEn = [
     id: 'green-green-museum',
     title: 'Green Green Museum : Sensory Notes',
     info: ['Date: 2026.08.11 - 2026.12.04', 'Suwon Manseok Gallery'],
-    imageSrc: image01,
-    imageSrcDesktop: image01Wide,
+    imageSrc: image01Wide, // 모바일도 데스크탑과 같은 움직이는 배너 (사용자 결정 2026-11-09)
     imageAlt: '',
   },
   {
@@ -55,8 +53,7 @@ export const bannersKo = [
     id: 'green-green-museum',
     title: '그린 그린 뮤지엄 : 센서리 노트',
     info: ['기간: 2026.08.11 - 2026.12.04', '수원만석전시관'],
-    imageSrc: image01,
-    imageSrcDesktop: image01Wide,
+    imageSrc: image01Wide, // 모바일도 데스크탑과 같은 움직이는 배너 (사용자 결정 2026-11-09)
     imageAlt: '',
   },
   {
