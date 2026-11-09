@@ -8,10 +8,13 @@
  *   title     배너 제목
  *   info      설명 줄 목록 (기간, 장소)
  *   imageSrc  이미지 (assets/images)
+ *   imageSrcDesktop  데스크탑용 가로형 이미지 (실제 사이트 데스크탑 배너, 없으면 imageSrc)
  *   imageAlt  대체 텍스트. 포스터 내용이 제목과 겹치므로 ''(꾸밈용)
  */
 import image01 from '../assets/images/image-01.jpg';
 import image02 from '../assets/images/image-02.jpg';
+import image01Wide from '../assets/images/image-01-wide.gif';
+import image02Wide from '../assets/images/image-02-wide.jpg';
 import image09 from '../assets/images/image-09-s.jpg';
 
 export const bannersEn = [
@@ -27,6 +30,7 @@ export const bannersEn = [
     title: 'Green Green Museum : Sensory Notes',
     info: ['Date: 2026.08.11 - 2026.12.04', 'Suwon Manseok Gallery'],
     imageSrc: image01,
+    imageSrcDesktop: image01Wide,
     imageAlt: '',
   },
   {
@@ -34,6 +38,7 @@ export const bannersEn = [
     title: '2026 SUMA Collection Exhibition: Blanc Black Panorama',
     info: ['Date: 2026.02.12 - 2027.03.01', 'Suwon Museum of Art'],
     imageSrc: image02,
+    imageSrcDesktop: image02Wide,
     imageAlt: '',
   },
 ];
@@ -51,6 +56,7 @@ export const bannersKo = [
     title: '그린 그린 뮤지엄 : 센서리 노트',
     info: ['기간: 2026.08.11 - 2026.12.04', '수원만석전시관'],
     imageSrc: image01,
+    imageSrcDesktop: image01Wide,
     imageAlt: '',
   },
   {
@@ -58,6 +64,7 @@ export const bannersKo = [
     title: '2026 SUMA 소장품전: 블랑 블랙 파노라마',
     info: ['기간: 2026.02.12 - 2027.03.01', '수원시립미술관'],
     imageSrc: image02,
+    imageSrcDesktop: image02Wide,
     imageAlt: '',
   },
 ];

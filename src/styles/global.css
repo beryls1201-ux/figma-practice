@@ -41,6 +41,24 @@
   }
 }
 
+/* 화면 틀 (App.jsx): 내용이 짧아도 푸터를 화면 맨 아래에 붙여 푸터 아래 공백을 없앰 */
+.page-frame {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-frame > .site-footer {
+  margin-top: auto;
+}
+
+/* 데스크탑은 body zoom으로 줄어들므로, 줄어든 만큼 높이를 키워야 화면 높이와 같아짐 */
+@media (min-width: 768px) {
+  .page-frame {
+    min-height: calc(100vh / var(--page-zoom));
+  }
+}
+
 /* 모바일 기본 콘텐츠 컨테이너 */
 .container {
   width: 100%;

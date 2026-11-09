@@ -7,11 +7,21 @@ import './ImageFrame.css';
  *
  * @param {string} src  이미지 주소 (예: import한 jpg/png)
  * @param {string} alt  대체 텍스트. 꾸밈용이면 빈 문자열('')
+ * @param {string} srcDesktop  데스크탑(768px 이상)에서 대신 쓸 이미지 (없으면 src 사용)
  */
-export default function ImageFrame({ src, alt = '', className = '' }) {
+export default function ImageFrame({ src, srcDesktop, alt = '', className = '' }) {
+  const image = src && <img src={src} alt={alt} className="image-frame__image" />;
+
   return (
     <div className={['image-frame', className].filter(Boolean).join(' ')}>
-      {src && <img src={src} alt={alt} className="image-frame__image" />}
+      {srcDesktop ? (
+        <picture>
+          <source media="(min-width: 768px)" srcSet={srcDesktop} />
+          {image}
+        </picture>
+      ) : (
+        image
+      )}
     </div>
   );
 }

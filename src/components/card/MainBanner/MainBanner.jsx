@@ -7,6 +7,7 @@ import './MainBanner.css';
  *   Property 1=데스크탑 → 768px 이상 (제목 Display 34px, 설명 Body/Large 19px)
  *
  * @param {string} imageSrc  배너 이미지
+ * @param {string} imageSrcDesktop  데스크탑용 가로형 이미지 (없으면 imageSrc 사용)
  * @param {string} imageAlt  이미지 대체 텍스트
  * @param {string} title     제목 (예: "Green Green Museum : Sensory Notes")
  * @param {string[]} info    설명 줄 목록 (예: ["Date: 2026.08.11 - 2026.12.04", "Suwon Manseok Gallery"])
@@ -14,6 +15,7 @@ import './MainBanner.css';
  */
 export default function MainBanner({
   imageSrc,
+  imageSrcDesktop,
   imageAlt = '',
   title,
   info = [],
@@ -22,7 +24,7 @@ export default function MainBanner({
 }) {
   return (
     <section className={['main-banner', className].filter(Boolean).join(' ')}>
-      <ImageFrame src={imageSrc} alt={imageAlt} className="main-banner__image" />
+      <ImageFrame src={imageSrc} srcDesktop={imageSrcDesktop} alt={imageAlt} className="main-banner__image" />
       <div className="main-banner__text">
         <TitleTag className="main-banner__title">{title}</TitleTag>
         {info.length > 0 && (

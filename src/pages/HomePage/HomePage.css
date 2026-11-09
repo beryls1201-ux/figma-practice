@@ -5,6 +5,16 @@
   padding-block: var(--spacing-12);
 }
 
+/* 모바일: 배너 아래 공백이 덜 보이도록 이미지 칸을 1:1로 세로로 늘림
+   이미지는 자르지 않고 칸에 맞춰 세로로 늘려 채움 (사용자 결정 2026-11-09) */
+.home-page .main-banner__image {
+  aspect-ratio: 1 / 1;
+}
+
+.home-page .main-banner__image .image-frame__image {
+  object-fit: fill;
+}
+
 /* 헤더: 모바일은 MobileHeader, 768px 이상은 DesktopHeader */
 .home-page__desktop-header {
   display: none;
@@ -22,5 +32,22 @@
   /* 데스크탑: MainBanner 기본 여백(30px)으로 */
   .home-page .main-banner {
     padding-block: var(--spacing-30);
+  }
+
+  /* 데스크탑: 실제 사이트 데스크탑 배너 비율(1784:820)
+     가로형 이미지를 자르지 않고 원래 비율로 넣음 (비율이 조금 다른 이미지는 위아래 얇은 띠) */
+  .home-page .main-banner__image {
+    aspect-ratio: 1784 / 820;
+    background-color: var(--color-page-container-border);
+  }
+
+  .home-page .main-banner__image .image-frame__image {
+    object-fit: contain;
+  }
+
+  /* 블랑 블랙 파노라마: 이미지 비율(1240:520)이 칸보다 납작해 생기는 위아래 띠를 없앰
+     → 세로로 늘려 칸을 채움 (사용자 결정 2026-11-09) */
+  .home-page .main-banner--blanc-black-panorama .image-frame__image {
+    object-fit: fill;
   }
 }

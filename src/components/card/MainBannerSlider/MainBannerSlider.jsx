@@ -96,7 +96,9 @@ export default function MainBannerSlider({
             inert={i !== index}
           >
             <MainBanner
+              className={`main-banner--${slide.id}`}
               imageSrc={slide.imageSrc}
+              imageSrcDesktop={slide.imageSrcDesktop}
               imageAlt={slide.imageAlt}
               title={slide.title}
               info={slide.info}

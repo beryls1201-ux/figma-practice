@@ -97,7 +97,7 @@ function LanguageLayout() {
 
   return (
     <LanguageContext.Provider value={value}>
-      <div onClick={handleClick}>
+      <div className="page-frame" onClick={handleClick}>
         {menuOpen ? (
           <MenuPage
             currentId={currentMenuId(location.pathname)}
