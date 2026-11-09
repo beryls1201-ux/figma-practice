@@ -46,6 +46,9 @@ const CODE_STRINGS = {
   comingSoonBody: { en: 'This page is being prepared.', ko: '이 페이지는 준비 중입니다.' },
   // Figma 예시 "25 visitors" / "방문객 25명"과 같은 형식
   visitorsCount: { en: '{n} visitors', ko: '방문객 {n}명' },
+  // 총 관람 인원 −/+ 버튼 (화면낭독기용)
+  visitorsDecrease: { en: 'Decrease visitors', ko: '인원 줄이기' },
+  visitorsIncrease: { en: 'Increase visitors', ko: '인원 늘리기' },
   // 메인 배너 자동 슬라이드 (화면낭독기용)
   bannerSliderLabel: { en: 'Featured exhibitions', ko: '주요 전시 배너' },
   bannerGoTo: { en: 'Go to banner {n}', ko: '배너 {n}번째 보기' },

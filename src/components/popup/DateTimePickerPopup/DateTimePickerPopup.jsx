@@ -1,4 +1,4 @@
-import { useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import Icon from '../../icon/Icon/Icon';
 import ButtonSmall from '../../button/ButtonSmall/ButtonSmall';
 import './DateTimePickerPopup.css';
@@ -10,31 +10,31 @@ import './DateTimePickerPopup.css';
  * 화면에 띄울 때는 <Modal>로 감싸서 사용
  *
  * 동작
- *   - ‹ › 버튼으로 월 이동, 날짜를 누르면 선택 (오늘 이전 날짜는 선택 불가)
- *   - 시(1~12)·분(00~59) 입력, AM/PM 선택
+ *   - ‹ › 버튼으로 월 이동, 날짜를 누르면 선택 (minDate 이전 날짜는 회색 배경 + 선택 불가)
+ *   - 시간: startTime~endTime을 timeStep분 간격으로 나열한 목록을 스크롤해서 선택
+ *     (실제 관람시간 기준 10:00~17:00, 30분 — 사용자 결정 2026-11-09)
  *   - OK: 선택한 날짜·시간을 Date로 onConfirm에 전달 / Cancel: onCancel
  *   - Figma의 연필(edit)·키보드(keyboard)·월 옆 ▼ 아이콘은 동작이 정해지지 않아 제외
  *
  * @param {string} titleId      제목 id (Modal의 labelledBy와 같은 값). 없으면 자동 생성
- * @param {Date} defaultValue   처음 선택돼 있을 날짜·시간 (없으면 날짜 미선택, 10:00 AM)
+ * @param {Date} defaultValue   처음 선택돼 있을 날짜·시간 (없으면 날짜 미선택, 첫 시간)
  * @param {Date} minDate        선택 가능한 첫 날짜 (기본: 오늘)
+ * @param {string} startTime    첫 시간 (기본 '10:00')
+ * @param {string} endTime      마지막 시간 (기본 '17:00')
+ * @param {number} timeStep     시간 간격(분) (기본 30)
  * @param {function} onConfirm  OK 클릭 시 (Date)를 받음
  * @param {function} onCancel   Cancel 클릭 시
  * @param {string} locale       날짜 표기 언어 (기본 'en-US', 국문 화면은 'ko-KR')
- * @param {object} labels       문구 바꾸기 (title, time, hour, minute, am, pm, cancel, ok, prevMonth, nextMonth, noDate)
+ * @param {object} labels       문구 바꾸기 (title, time, cancel, ok, prevMonth, nextMonth, noDate)
  */
 const DEFAULT_LABELS = {
   title: 'Select Date & Time',
   time: 'Enter Time (Only play time)',
-  hour: 'Hour',
-  minute: 'Minute',
   cancel: 'Cancel',
   ok: 'OK',
   prevMonth: 'Previous month',
   nextMonth: 'Next month',
   noDate: 'Select a date',
-  am: 'AM',
-  pm: 'PM',
 };
 
 // 날짜 비교용: 시간을 0시로 맞춤
@@ -50,12 +50,19 @@ function getMonthCells(year, month) {
   return cells;
 }
 
-const pad2 = (value) => String(value).padStart(2, '0');
+// '10:30' → 630 (자정부터 몇 분)
+const toMinutes = (text) => {
+  const [h, m] = text.split(':').map(Number);
+  return h * 60 + m;
+};
 
 export default function DateTimePickerPopup({
   titleId,
   defaultValue,
   minDate,
+  startTime = '10:00',
+  endTime = '17:00',
+  timeStep = 30,
   onConfirm,
   onCancel,
   locale = 'en-US',
@@ -65,8 +72,6 @@ export default function DateTimePickerPopup({
   const labels = { ...DEFAULT_LABELS, ...customLabels };
   const autoId = useId();
   const headingId = titleId ?? autoId;
-  const hourId = `${autoId}-hour`;
-  const minuteId = `${autoId}-minute`;
 
   // 오늘 날짜는 팝업이 처음 열릴 때 한 번만 읽음
   const [today] = useState(() => startOfDay(new Date()));
@@ -78,10 +83,18 @@ export default function DateTimePickerPopup({
     const base = initial ?? min;
     return { year: base.getFullYear(), month: base.getMonth() };
   });
-  const initialHour24 = initial ? initial.getHours() : 10;
-  const [hour, setHour] = useState(String(initialHour24 % 12 || 12));
-  const [minute, setMinute] = useState(pad2(initial ? initial.getMinutes() : 0));
-  const [period, setPeriod] = useState(initialHour24 >= 12 ? 'PM' : 'AM');
+  // 시간 목록 (자정부터 몇 분인지로 저장: 10:30 → 630)
+  const timeSlots = useMemo(() => {
+    const list = [];
+    for (let m = toMinutes(startTime); m <= toMinutes(endTime); m += timeStep) list.push(m);
+    return list;
+  }, [startTime, endTime, timeStep]);
+  const [time, setTime] = useState(() => {
+    const wanted = initial ? initial.getHours() * 60 + initial.getMinutes() : null;
+    return timeSlots.includes(wanted) ? wanted : timeSlots[0];
+  });
+  const timeListRef = useRef(null);
+  const timeName = `${autoId}-time`;
 
   // 표기용 포맷
   const format = useMemo(
@@ -96,6 +109,7 @@ export default function DateTimePickerPopup({
       }),
       weekday: new Intl.DateTimeFormat(locale, { weekday: 'narrow' }),
       weekdayLong: new Intl.DateTimeFormat(locale, { weekday: 'long' }),
+      time: new Intl.DateTimeFormat(locale, { hour: 'numeric', minute: '2-digit' }),
     }),
     [locale],
   );
@@ -111,27 +125,23 @@ export default function DateTimePickerPopup({
     setView({ year: next.getFullYear(), month: next.getMonth() });
   };
 
-  // 입력값 정리: 범위를 벗어나면 가장 가까운 값으로
-  const fixHour = () => {
-    const value = Number.parseInt(hour, 10);
-    setHour(String(Number.isNaN(value) ? 12 : Math.min(Math.max(value, 1), 12)));
-  };
-  const fixMinute = () => {
-    const value = Number.parseInt(minute, 10);
-    setMinute(pad2(Number.isNaN(value) ? 0 : Math.min(Math.max(value, 0), 59)));
-  };
-
   const handleConfirm = () => {
     if (!selected) return;
-    const h = Math.min(Math.max(Number.parseInt(hour, 10) || 12, 1), 12);
-    const m = Math.min(Math.max(Number.parseInt(minute, 10) || 0, 0), 59);
-    const hour24 = (h % 12) + (period === 'PM' ? 12 : 0);
     const result = new Date(selected);
-    result.setHours(hour24, m, 0, 0);
+    result.setHours(Math.floor(time / 60), time % 60, 0, 0);
     onConfirm?.(result);
   };
 
-  const onlyDigits = (setter) => (event) => setter(event.target.value.replace(/\D/g, '').slice(0, 2));
+  // 시간 칸 표기: 영문 "10:30 AM", 국문 "오전 10:30"
+  const formatSlot = (minutes) =>
+    format.time.format(new Date(2000, 0, 1, Math.floor(minutes / 60), minutes % 60));
+
+  // 팝업이 열릴 때 선택된 시간이 목록 안에 보이도록 스크롤
+  useEffect(() => {
+    timeListRef.current
+      ?.querySelector('.date-time-picker__time-option--selected')
+      ?.scrollIntoView({ block: 'center' });
+  }, []);
 
   return (
     <div className={['date-time-picker', className].filter(Boolean).join(' ')}>
@@ -213,60 +223,32 @@ export default function DateTimePickerPopup({
           <fieldset className="date-time-picker__time-group">
             <legend className="date-time-picker__time-title">{labels.time}</legend>
 
-            <div className="date-time-picker__time-input">
-              <div className="date-time-picker__field">
-                <input
-                  id={hourId}
-                  className="date-time-picker__number"
-                  inputMode="numeric"
-                  autoComplete="off"
-                  value={hour}
-                  onChange={onlyDigits(setHour)}
-                  onBlur={fixHour}
-                />
-                <label htmlFor={hourId} className="date-time-picker__unit">
-                  {labels.hour}
-                </label>
-              </div>
-
-              <span className="date-time-picker__colon">
-                <Icon name="colon" />
-              </span>
-
-              <div className="date-time-picker__field">
-                <input
-                  id={minuteId}
-                  className="date-time-picker__number"
-                  inputMode="numeric"
-                  autoComplete="off"
-                  value={minute}
-                  onChange={onlyDigits(setMinute)}
-                  onBlur={fixMinute}
-                />
-                <label htmlFor={minuteId} className="date-time-picker__unit">
-                  {labels.minute}
-                </label>
-              </div>
-
-              {/* AM/PM Selector */}
-              <div className="date-time-picker__period" role="group" aria-label="AM / PM">
-                {['AM', 'PM'].map((value) => (
-                  <button
-                    key={value}
-                    type="button"
+            {/* 시간 목록: 위아래로 스크롤해서 선택 (라디오 버튼이라 화살표 키로도 이동) */}
+            <div ref={timeListRef} className="date-time-picker__time-list">
+              {timeSlots.map((slot) => {
+                const isSelected = slot === time;
+                return (
+                  <label
+                    key={slot}
                     className={[
-                      'date-time-picker__period-button',
-                      period === value && 'date-time-picker__period-button--selected',
+                      'date-time-picker__time-option',
+                      isSelected && 'date-time-picker__time-option--selected',
                     ]
                       .filter(Boolean)
                       .join(' ')}
-                    aria-pressed={period === value}
-                    onClick={() => setPeriod(value)}
                   >
-                    {value === 'AM' ? labels.am : labels.pm}
-                  </button>
-                ))}
-              </div>
+                    <input
+                      type="radio"
+                      name={timeName}
+                      value={slot}
+                      checked={isSelected}
+                      onChange={() => setTime(slot)}
+                      className="sr-only"
+                    />
+                    {formatSlot(slot)}
+                  </label>
+                );
+              })}
             </div>
           </fieldset>
 

@@ -5,6 +5,7 @@ import NoticeList from '../../components/form/NoticeList/NoticeList';
 import FormField from '../../components/form/FormField/FormField';
 import DateInput from '../../components/form/DateInput/DateInput';
 import TextInput from '../../components/form/TextInput/TextInput';
+import NumberStepper from '../../components/form/NumberStepper/NumberStepper';
 import Checkbox from '../../components/form/Checkbox/Checkbox';
 import Button from '../../components/button/Button/Button';
 import Modal from '../../components/popup/Modal/Modal';
@@ -31,6 +32,7 @@ import './GroupTourPage.css';
  *   - 제출: 빠진 항목이 있으면 에러 팝업, 모두 맞으면 성공 팝업
  *   - 에러 팝업 버튼: 첫 번째 오류 항목으로 포커스 이동
  */
+const MIN_VISITORS = 10; // 안내 문구 "단체 인원 10~30명" 기준 (사용자 결정 2026-11-09)
 const MAX_VISITORS = 30;
 const MIN_DAYS_AHEAD = 7;
 
@@ -42,7 +44,7 @@ export default function GroupTourPage() {
 
   const [visitDate, setVisitDate] = useState(null);
   const [organization, setOrganization] = useState('');
-  const [visitors, setVisitors] = useState('');
+  const [visitors, setVisitors] = useState(MIN_VISITORS);
   const [contactName, setContactName] = useState('');
   const [email, setEmail] = useState('');
   const [docent, setDocent] = useState('');
@@ -68,7 +70,7 @@ export default function GroupTourPage() {
       list.push({ id: 'organization', field: 'Message_body_title3', message: 'Message_body_title3_body' });
     }
     const count = Number.parseInt(visitors, 10);
-    if (!count || count < 1 || count > MAX_VISITORS) {
+    if (!count || count < MIN_VISITORS || count > MAX_VISITORS) {
       list.push({ id: 'visitors', field: 'Message_body_title4', message: 'Message_body_title4_body' });
     }
     if (!contactName.trim() || !isEmail(email)) {
@@ -164,12 +166,16 @@ export default function GroupTourPage() {
 
             {/* 입력메뉴3 */}
             <FormField label={t('Subtitle3')} required requiredText={t('required')} htmlFor="visitors">
-              <TextInput
+              {/* − / + 버튼으로 10~30명 조정 (숫자 직접 입력도 가능) */}
+              <NumberStepper
                 id="visitors"
-                inputMode="numeric"
                 placeholder={t('Subtitle3_body1')}
                 value={visitors}
-                onChange={(e) => setVisitors(e.target.value.replace(/\D/g, '').slice(0, 3))}
+                onChange={setVisitors}
+                min={MIN_VISITORS}
+                max={MAX_VISITORS}
+                decreaseLabel={t('visitorsDecrease')}
+                increaseLabel={t('visitorsIncrease')}
               />
             </FormField>
 
@@ -249,10 +255,6 @@ export default function GroupTourPage() {
           labels={{
             title: t('Message_title3'),
             time: t('Message_body_title8'),
-            hour: t('Message_body_ex1'),
-            minute: t('Message_body_ex2'),
-            am: t('Message_button4'),
-            pm: t('Message_button5'),
             cancel: t('Message_button6'),
             ok: t('Message_button7'),
             prevMonth: t('prevMonth'),

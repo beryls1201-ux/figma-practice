@@ -1,0 +1,44 @@
+/* ==========================================================================
+   NumberStepper — 숫자 조정 입력칸 (− 숫자 +)
+   - 버튼 크기는 입력칸 높이와 같음: 모바일 44px(터치 영역), 데스크탑 75px(TextInput과 같음)
+   - 테두리·모서리·색은 TextInput과 같은 Input Fields 토큰
+   ========================================================================== */
+
+.number-stepper {
+  display: flex;
+  gap: var(--spacing-8);
+  width: 100%;
+}
+
+.number-stepper__input {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.number-stepper__button {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border: 1px solid var(--color-input-fields-stroke);
+  border-radius: var(--radius-18);
+  background-color: var(--color-input-fields-back);
+  color: var(--color-input-fields-text);
+  font-size: var(--text-size-24);
+  font-weight: var(--text-weight-600);
+  line-height: 1;
+}
+
+.number-stepper__button:hover:not(:disabled) {
+  background-color: var(--color-cards-back-back);
+}
+
+@media (min-width: 768px) {
+  .number-stepper__button {
+    width: 75px;
+    height: 75px;
+  }
+}
