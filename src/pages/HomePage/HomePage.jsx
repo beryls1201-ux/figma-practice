@@ -3,8 +3,10 @@ import DesktopHeader from '../../components/layout/DesktopHeader/DesktopHeader';
 import SearchButton from '../../components/button/SearchButton/SearchButton';
 import LanguageSelect from '../../components/navigation/LanguageSelect/LanguageSelect';
 import Button2 from '../../components/button/Button2/Button2';
-import MainBanner from '../../components/card/MainBanner/MainBanner';
+import MainBannerSlider from '../../components/card/MainBannerSlider/MainBannerSlider';
 import { bannersEn, bannersKo } from '../../data/banners';
+import logoKo from '../../assets/images/logo.png';
+import logoEn from '../../assets/images/logo_en.png';
 import { menuEn, menuKo } from '../../data/menu';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useLanguage from '../../i18n/useLanguage';
@@ -13,9 +15,10 @@ import './HomePage.css';
 
 /**
  * HomePage — 메인
- *   모바일: Figma "모바일-메인" (node 264:9846) — 헤더(로고 · 언어선택 · Menu) + 배너 2개
+ *   모바일: Figma "모바일-메인" (node 264:9846) — 헤더(로고 · 언어선택 · Menu) + 배너
  *   데스크탑(768px 이상): Figma "데크스탑-메인" (node 231:1184)
- *     헤더-상단고정메뉴(로고 · Search · 언어선택 + 대메뉴 탭) + 배너 2개
+ *     헤더-상단고정메뉴(로고 · Search · 언어선택 + 대메뉴 탭) + 배너
+ *   배너는 3개 자동 슬라이드 (MainBannerSlider, 실제 사이트 메인과 같은 방식)
  * 문구는 현재 언어(useLanguage)에 따라 바뀜
  *
  * @param {function} onOpenMenu  모바일 Menu 버튼을 눌렀을 때 (모바일-메인메뉴 화면 열기)
@@ -53,6 +56,7 @@ export default function HomePage({ onOpenMenu }) {
         className="home-page__desktop-header"
         homeHref={withLang(lang)}
         homeLabel={t('siteName')}
+        logoSrc={lang === 'ko' ? logoKo : logoEn}
         menuItems={menu}
         menuLabel={t('mainMenuLabel')}
         notice={t('Experience1')}
@@ -68,15 +72,11 @@ export default function HomePage({ onOpenMenu }) {
 
       <main>
         <h1 className="sr-only">{t('siteName')}</h1>
-        {banners.map((banner) => (
-          <MainBanner
-            key={banner.id}
-            imageSrc={banner.imageSrc}
-            imageAlt={banner.imageAlt}
-            title={banner.title}
-            info={banner.info}
-          />
-        ))}
+        <MainBannerSlider
+          slides={banners}
+          label={t('bannerSliderLabel')}
+          goToLabel={(n) => t('bannerGoTo', { n })}
+        />
       </main>
     </div>
   );

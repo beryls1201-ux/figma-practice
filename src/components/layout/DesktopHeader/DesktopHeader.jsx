@@ -14,6 +14,7 @@ import './DesktopHeader.css';
  * @param {string} menuLabel   대메뉴 영역 이름 (화면낭독기용, 기본 "Main menu")
  * @param {string} homeHref     로고를 눌렀을 때 이동할 주소
  * @param {string} homeLabel    로고 링크 이름 (기본 "Suwon Museum of Art")
+ * @param {string} logoSrc      로고 이미지 (언어별, 없으면 국문 로고)
  * @param {React.ReactNode} children  오른쪽 버튼들 (예: <SearchButton />, <LanguageSelect />)
  */
 export default function DesktopHeader({
@@ -23,6 +24,7 @@ export default function DesktopHeader({
   menuLabel = 'Main menu',
   homeHref = '/',
   homeLabel = 'Suwon Museum of Art',
+  logoSrc,
   children,
   className = '',
 }) {
@@ -31,7 +33,7 @@ export default function DesktopHeader({
       {/* 최상단메뉴 */}
       <div className="desktop-header__top">
         <a href={homeHref} className="desktop-header__home">
-          <Logo variant="desktop" alt={homeLabel} />
+          <Logo variant="desktop" src={logoSrc} alt={homeLabel} />
         </a>
         {/* 상단버튼모음 */}
         <div className="desktop-header__actions">{children}</div>

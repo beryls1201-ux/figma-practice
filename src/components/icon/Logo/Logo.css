@@ -41,7 +41,8 @@
 .logo--desktop .logo__image {
   position: static;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain; /* 국·영문 로고 비율이 조금 달라도 잘리지 않게 */
+  object-position: left center;
 }
 
 @media (min-width: 768px) {

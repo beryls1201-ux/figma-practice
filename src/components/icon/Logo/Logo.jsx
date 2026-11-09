@@ -1,4 +1,4 @@
-import logo from '../../../assets/images/logo.png';
+import logoKo from '../../../assets/images/logo.png';
 import './Logo.css';
 
 /**
@@ -8,10 +8,12 @@ import './Logo.css';
  *
  * @param {'auto'|'mobile'|'desktop'} variant
  *   auto(기본): 767px 이하 모바일, 768px 이상 데스크탑 모양
+ * @param {string} src  로고 이미지 (기본: 국문 logo.png. 영문 화면은 logo_en.png를 넘김)
  * @param {string} alt  대체 텍스트 (영문 화면에서는 "Suwon Museum of Art")
  */
 export default function Logo({
   variant = 'auto',
+  src = logoKo,
   alt = '수원시립미술관',
   className = '',
 }) {
@@ -22,7 +24,7 @@ export default function Logo({
   return (
     <span className={classNames}>
       <span className="logo__frame">
-        <img src={logo} alt={alt} className="logo__image" />
+        <img src={src} alt={alt} className="logo__image" />
       </span>
     </span>
   );
