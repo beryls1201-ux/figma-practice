@@ -79,6 +79,12 @@
   text-decoration: underline;
 }
 
+/* 이동할 수 있는 메뉴: 진한 글자 + 약간 굵게 (비활성 메뉴와 구분, 가독성 확보) */
+.desktop-main-menu__link:not(.desktop-main-menu__link--disabled) {
+  color: var(--color-page-container-text);
+  font-weight: var(--text-weight-600);
+}
+
 /* 비활성 메뉴: 흐린 글자, 마우스를 올려도 그대로 */
 .desktop-main-menu__link--disabled,
 .desktop-main-menu__link--disabled:hover {

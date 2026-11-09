@@ -36,6 +36,12 @@
   color: var(--color-gnb-lnb-info-text);
 }
 
+/* 이동할 수 있는 메뉴(현재 페이지 제외): 진한 글자 (비활성 메뉴와 구분, 가독성 확보)
+   현재 페이지는 기존 "선택" 모양(파란 배경 + 파란 글자) 유지 */
+.side-menu-child:not(.side-menu-child--disabled):not(.side-menu-child--current) {
+  color: var(--color-page-container-text);
+}
+
 /* 사용 불가 메뉴: 흐린 글자, 마우스를 올려도 그대로 */
 .side-menu-child--disabled,
 .side-menu-child--disabled:hover {
