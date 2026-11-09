@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Breadcrumb from '../../components/navigation/Breadcrumb/Breadcrumb';
 import useLanguage from '../../i18n/useLanguage';
-import { withLang } from '../../i18n/paths';
+import { linkWithLang, withLang } from '../../i18n/paths';
 import '../PageTop.css';
 import './ComingSoonPage.css';
 
@@ -20,7 +20,7 @@ export default function ComingSoonPage({ title }) {
       <div className="page-top">
         <Breadcrumb
           label={t('breadcrumbLabel')}
-          items={[{ label: t('Address1'), href: withLang(lang) }, { label: heading }]}
+          items={[{ label: t('Address1'), href: linkWithLang(lang) }, { label: heading }]}
         />
       </div>
 

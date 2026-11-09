@@ -10,7 +10,7 @@ import logoEn from '../../assets/images/logo_en.png';
 import { menuEn, menuKo } from '../../data/menu';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useLanguage from '../../i18n/useLanguage';
-import { localizeMenu, swapLanguage, withLang } from '../../i18n/paths';
+import { linkWithLang, localizeMenu, swapLanguage } from '../../i18n/paths';
 import './HomePage.css';
 
 /**
@@ -40,7 +40,7 @@ export default function HomePage({ onOpenMenu }) {
 
   return (
     <div className="home-page">
-      <MobileHeader className="home-page__mobile-header" homeHref={withLang(lang)} homeLabel={t('siteName')}>
+      <MobileHeader className="home-page__mobile-header" homeHref={linkWithLang(lang)} homeLabel={t('siteName')}>
         <LanguageSelect
           value={lang}
           onChange={changeLanguage}
@@ -54,7 +54,7 @@ export default function HomePage({ onOpenMenu }) {
 
       <DesktopHeader
         className="home-page__desktop-header"
-        homeHref={withLang(lang)}
+        homeHref={linkWithLang(lang)}
         homeLabel={t('siteName')}
         logoSrc={lang === 'ko' ? logoKo : logoEn}
         menuItems={menu}

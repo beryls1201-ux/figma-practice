@@ -15,7 +15,7 @@ import BookingSuccessPopup from '../../components/popup/BookingSuccessPopup/Book
 import { menuEn, menuKo } from '../../data/menu';
 import { useNavigate } from 'react-router-dom';
 import useLanguage from '../../i18n/useLanguage';
-import { localizeMenu, withLang } from '../../i18n/paths';
+import { linkWithLang, localizeMenu, withLang } from '../../i18n/paths';
 import { LOCALES, formatFieldDate, formatSummaryDate } from '../../i18n/format';
 import '../PageTop.css';
 import './GroupTourPage.css';
@@ -116,8 +116,8 @@ export default function GroupTourPage() {
         <Breadcrumb
           label={t('breadcrumbLabel')}
           items={[
-            { label: t('Address1'), href: withLang(lang) },
-            { label: t('Address4'), href: withLang(lang, '/visitor-info/hours-admission') },
+            { label: t('Address1'), href: linkWithLang(lang) },
+            { label: t('Address4'), href: linkWithLang(lang, '/visitor-info/hours-admission') },
             { label: t('Address5') },
           ]}
         />

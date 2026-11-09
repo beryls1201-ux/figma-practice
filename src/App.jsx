@@ -20,7 +20,7 @@ import { policyLinks, snsLinks, telHref } from './data/footer'
 import { LanguageContext } from './i18n/languageContext'
 import useLanguage from './i18n/useLanguage'
 import { LANGUAGES, translate } from './i18n/strings'
-import { currentMenuId, swapLanguage, withLang } from './i18n/paths'
+import { currentMenuId, fromHref, swapLanguage, withLang } from './i18n/paths'
 
 /**
  * 화면 주소 (react-router-dom) — 언어를 주소 맨 앞에 둠
@@ -58,7 +58,7 @@ function useLinkInterceptor() {
     const href = link.getAttribute('href')
     if (!href.startsWith('/')) return
     event.preventDefault()
-    navigate(href)
+    navigate(fromHref(href))
   }
 }
 

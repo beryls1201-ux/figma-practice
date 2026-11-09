@@ -4,7 +4,7 @@ import MainInfoCards from '../../components/card/MainInfoCards/MainInfoCards';
 import { menuEn, menuKo } from '../../data/menu';
 import { programsEn, programsKo } from '../../data/programs';
 import useLanguage from '../../i18n/useLanguage';
-import { localizeMenu, withLang } from '../../i18n/paths';
+import { linkWithLang, localizeMenu } from '../../i18n/paths';
 import '../PageTop.css';
 
 /**
@@ -29,8 +29,8 @@ export default function ProgramsPage({ onApply }) {
         <Breadcrumb
           label={t('breadcrumbLabel')}
           items={[
-            { label: t('Address1'), href: withLang(lang) },
-            { label: t('Address2'), href: withLang(lang, '/education/programs-workshops') },
+            { label: t('Address1'), href: linkWithLang(lang) },
+            { label: t('Address2'), href: linkWithLang(lang, '/education/programs-workshops') },
             { label: t('Address3') },
           ]}
         />

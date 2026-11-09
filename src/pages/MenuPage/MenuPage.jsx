@@ -3,7 +3,7 @@ import Button2 from '../../components/button/Button2/Button2';
 import MobileMainMenu from '../../components/navigation/MobileMainMenu/MobileMainMenu';
 import { menuEn, menuKo } from '../../data/menu';
 import useLanguage from '../../i18n/useLanguage';
-import { localizeMenu, withLang } from '../../i18n/paths';
+import { linkWithLang, localizeMenu } from '../../i18n/paths';
 
 /**
  * MenuPage — Figma "모바일-메인메뉴" (node 264:9854)
@@ -18,7 +18,7 @@ export default function MenuPage({ onClose, currentId }) {
 
   return (
     <div className="menu-page">
-      <MobileHeader homeHref={withLang(lang)} homeLabel={t('siteName')}>
+      <MobileHeader homeHref={linkWithLang(lang)} homeLabel={t('siteName')}>
         <Button2 type="close" aria-expanded={true} onClick={onClose} autoFocus>
           {t('Close')}
         </Button2>
