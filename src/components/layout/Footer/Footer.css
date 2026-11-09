@@ -15,9 +15,11 @@
   color: var(--color-page-container-text-sub);
 }
 
+/* 모든 줄 가운데 정렬 */
 .site-footer__top {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--spacing-12);
 }
 
@@ -26,6 +28,7 @@
 .site-footer__policies {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   column-gap: var(--spacing-16);
 }
 
@@ -66,6 +69,8 @@
 
 .site-footer__sns {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--spacing-4);
 }
 
@@ -88,7 +93,9 @@
 .site-footer__bottom {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--spacing-8);
+  text-align: center;
   padding-top: var(--spacing-16);
   border-top: 1px solid var(--color-page-container-stroke);
   color: var(--color-page-container-text-address);
@@ -99,6 +106,7 @@
 .site-footer__contact {
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-style: normal;
 }
 
@@ -141,6 +149,7 @@
 
   .site-footer__contact {
     flex-direction: row;
+    justify-content: center;
     gap: var(--spacing-16);
   }
 }
