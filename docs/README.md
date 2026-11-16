@@ -1,56 +1,52 @@
-# 수원시립미술관 영문 포털 (SUMA Portal)
+# [수원시립미술관 다국어 웹사이트 UI/UX·IA 개선 프로젝트]
 
-React + Vite + JavaScript + 기본 CSS(CSS 변수) 구조
+> 수원시립미술관 영문 사이트의 메뉴 구조를 국문과 1:1로 맞춰, 외국인 방문객이 단체 관람 예약 메뉴를 2~3클릭 안에 찾도록 개선한 모바일 우선 반응형 웹 리뉴얼
 
-## 실행
+## 1. 링크
 
-```bash
-npm install
-npm run dev      # 개발 서버
-npm run build    # 프로덕션 빌드
-npm run preview  # 빌드 결과 미리보기
-npm run lint     # oxlint
-```
+- **Live Demo**: https://beryls1201-ux.github.io/figma-practice/en
+- **GitHub**: https://github.com/beryls1201-ux/figma-practice
+- **Figma 디자인**: https://www.figma.com/design/HKx6w77ABG3uVcxjyoshsa/%EC%88%98%EC%9B%90%EC%8B%9C%EB%A6%BD%EB%AF%B8%EC%88%A0%EA%B4%80%ED%8F%AC%ED%84%B8-%ED%99%8D%EC%A0%95%EB%AF%BC?node-id=165-8169&t=LXzJc3tpocfH6L1Q-1
 
-## 폴더 구조
+## 2. 프로젝트 정보
 
-```
-src/
-├─ assets/
-│  ├─ icons/          # SVG 아이콘
-│  └─ images/         # 배너·카드 이미지
-├─ components/        # 공통 컴포넌트 (종류/컴포넌트명/컴포넌트명.jsx + .css)
-│  ├─ button/         # 버튼
-│  ├─ card/           # 카드·배너
-│  ├─ form/           # 입력 폼
-│  ├─ icon/           # 아이콘·로고
-│  ├─ layout/         # 화면 틀 (헤더)
-│  ├─ navigation/     # 메뉴·현재 위치·언어 선택
-│  └─ popup/          # 팝업
-├─ data/              # 카드·메뉴 등 화면에 넣을 데이터 (.js)
-├─ fonts/             # Pretendard GOV 폰트 파일 (.woff2)
-├─ i18n/              # 언어 전환 (Figma 문구 변수 영문·국문, t() 번역 함수)
-├─ pages/             # 페이지 단위 컴포넌트
-├─ styles/
-│  ├─ fonts.css       # @font-face 폰트 등록
-│  ├─ reset.css       # 브라우저 기본 스타일 초기화
-│  ├─ base.css        # HTML 요소 기본 스타일 (body·제목·링크)
-│  ├─ tokens.css      # 디자인 토큰 (컬러·타이포·간격·radius)
-│  ├─ typography.css  # 텍스트 스타일 클래스 (.text-*)
-│  └─ global.css      # 전역 유틸리티
-├─ App.jsx / App.css
-├─ index.css          # 스타일 진입점 (tokens → fonts → reset → base → typography → global)
-└─ main.jsx
-docs/                 # 모든 .md 문서는 여기에만 둠
-├─ README.md          # 프로젝트 소개·실행 방법 (이 파일)
-├─ PRD.md             # 기획 문서
-└─ CLAUDE.md          # Claude 작업 규칙
-CLAUDE.md             # 연결 파일 (@docs/CLAUDE.md 한 줄, 예외로 루트 유지)
-```
+- **제작 기간**: 2026.11.06 ~ 2026.11.10 (5일)
+- **담당 역할**: 개인 프로젝트 (기여도 100%)
+- **담당 범위**: Figma 개선 디자인 → 바이브코딩 구현 → GitHub Pages 배포
 
-## 디자인 기준
+## 3. 사용 기술
 
-- Figma: 수원시립미술관포털 → `핸드오프 문서` 페이지
-- 폰트: Pretendard GOV 로컬 파일 (`src/fonts`, `src/styles/fonts.css`)
-- 컴포넌트에서는 `tokens.css`의 **시맨틱 토큰**(`--color-*`)만 사용
-- 상세 규칙은 [CLAUDE.md](./CLAUDE.md), 기획은 [PRD.md](./PRD.md) 참고
+- **React, Vite**: PC·모바일 화면과 메뉴를 컴포넌트로 나눠 재사용하기 위해
+- **GitHub Pages**: 무료 배포
+- **Figma**: 개선 디자인 (와이어프레임, 서체·색상 스타일 정리)
+- **Claude**: 현황 분석, PRD 작성, 바이브코딩 (화면 구현)
+
+## 4. 주요 기능
+
+- [**국·영문 1:1 메뉴 구조**: 영문 대메뉴를 4개에서 7개로 복원하고(Education, Cultural Programs, Library & Collection 신설), 신설 하위 메뉴 6개를 추가. 국문 메뉴도 같은 구조로 정합화]
+- [**단체관람 예약 폼**: 입력창별 오류 문구와 상단 요약, 입력값 유지, 예약 완료 팝업]
+- [**모바일 메뉴 닫기(X)**: 전체 메뉴에서 1클릭으로 이전 화면으로 복귀]
+
+## 5. 트러블슈팅
+
+### 이슈 1: [영문 사이트에 대메뉴 3개와 서브메뉴 6개가 없음]
+
+- **문제**: [문은 대메뉴 7개인데 영문은 4개(Visitor Info, Exhibitions, News/PR, Art Museums)뿐이었음. Education, Cultural Programs, Library & Collection과 Group Tour Reservation, Membership Info, Online Exhibition, Newsletter, FAQ, Survey가 영문에 없어, 외국인 이용자가 미술관정보를 찾지 못해 불편을 겪고 있었음]
+- **원인**: [국·영문 메뉴가 같은 구조 기준 없이 따로 구성된 것으로 보임]
+- **해결**: [영문 GNB를 7개 대메뉴와 하위 메뉴로 복원하고, 국문에 없던 단체 관람 예약 하위 메뉴도 함께 신설해 국·영문 구조를 맞춤]
+
+### 이슈 2: [모바일 전체 메뉴에 닫기 버튼이 없음]
+
+- **문제**: [모바일에서 메뉴 버튼을 누르면 전체 메뉴가 열리는데, 메뉴를 닫는 버튼이 없었음. 메뉴를 잘못 열었거나 이동을 그만두고 싶을 때, 불필요한 링크를 누르거나 브라우저 뒤로가기를 써야 원래 페이지로 돌아올 수 있었음. 메뉴가 열린 화면 상단에는 로그인·검색 아이콘만 보이고 닫기(X)와 로고는 보이지 않았음]
+- **원인**: [전체 메뉴(Drawer)가 열린 상태의 헤더에 닫기 컨트롤이 설계되지 않은 것으로 보임]
+- **해결**: [전체 메뉴 상단에 로고와 닫기(X) 버튼을 추가해, 브라우저 뒤로가기가 아닌 클릭으로 열기 전 화면으로 복귀하도록 개선]
+
+## 6. AI 활용 방식
+
+- **맡긴 일**: [메뉴·과업 분석, 접근성 현황 정리(Lighthouse 리포트 해석), PRD 작성, 와이어프레임 이미지와 서체·색상 정리 자료 작성, Figma 화면의 React 구현]
+- **핵심 프롬프트**: "이 사이트를 탐색한 결과를 바탕으로 '제이콥 닐슨의 10가지 사용성 휴리스틱'과 '웹 접근성 지침(WCAG)'을 위반하고 있는 가장 치명적인 문제점 5가지를 찾아줘.", "위에 제공한 자료에 있는 내용만 바탕으로 쓰고, 없는 내용은 추측하거나 일반적인 공공서비스 사례로 채우지 말고, 근거가 부족한 부분은 **"추가 확인 필요"**라고 표시해주고, 선택사항은 나에게 한가지씩 선택지 형태로 제시해 줘."
+
+## 7. 회고
+
+- **배운 점**: [글로벌에서 영향력있는 우리나라에서 이 시대에 발맞춰 모든 구성이 다국어로 지원되고 있는데 아직도 다국어 지원이 제대로 되지 않는 시스템이 많다는 걸 깨닫게 되었습니다. 개선과 발전도 좋지만 내실을 먼저 다지고 개선할 수 있는 뿌리가 튼튼한 구성이 중요하다는 것을 새삼 깨닫게 되었습니다]
+- **아쉬운 점**: [언어 변환에 초점을 두어 개선을 진행 하다보니, 활성화된 메뉴가 한정적 이었고, 대부분의 메뉴는 구현을 하지 못하여, 완성도가 떨어져 보이는 부분이 아쉬웠습니다]
