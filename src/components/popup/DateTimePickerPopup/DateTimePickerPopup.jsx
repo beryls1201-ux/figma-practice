@@ -29,7 +29,7 @@ import './DateTimePickerPopup.css';
  */
 const DEFAULT_LABELS = {
   title: 'Select Date & Time',
-  time: 'Enter Time (Only play time)',
+  time: 'Enter Time (within opening hours)',
   cancel: 'Cancel',
   ok: 'OK',
   prevMonth: 'Previous month',

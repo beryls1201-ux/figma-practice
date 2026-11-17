@@ -26,7 +26,7 @@ export const bannersEn = [
   },
   {
     id: 'green-green-museum',
-    title: 'Green Green Museum : Sensory Notes',
+    title: 'Green Green Museum: Sensory Notes',
     info: ['Date: 2026.08.11 - 2026.12.04', 'Suwon Manseok Gallery'],
     imageSrc: image01Wide, // 모바일도 데스크탑과 같은 움직이는 배너 (사용자 결정 2026-11-09)
     imageAlt: '',
@@ -51,7 +51,7 @@ export const bannersKo = [
   },
   {
     id: 'green-green-museum',
-    title: '그린 그린 뮤지엄 : 센서리 노트',
+    title: '그린 그린 뮤지엄: 센서리 노트',
     info: ['기간: 2026.08.11 - 2026.12.04', '수원만석전시관'],
     imageSrc: image01Wide, // 모바일도 데스크탑과 같은 움직이는 배너 (사용자 결정 2026-11-09)
     imageAlt: '',

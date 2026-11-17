@@ -21,7 +21,7 @@ import './ErrorMessagePopup.css';
  * @param {string} title    제목 (기본 "Please check your reservation")
  * @param {string} message  안내 문구
  * @param {{field: string, message: string}[]} errors  오류 목록 (여러 개 가능)
- * @param {string} buttonLabel  버튼 글자 (기본 "OK, Take me to the First Error")
+ * @param {string} buttonLabel  버튼 글자 (기본 "OK, take me to the first error")
  * @param {function} onConfirm  버튼 클릭 (첫 번째 오류 입력창으로 이동하는 동작을 연결)
  */
 export default function ErrorMessagePopup({
@@ -29,7 +29,7 @@ export default function ErrorMessagePopup({
   title = 'Please check your reservation',
   message = "We couldn't submit your request. Please correct the following.",
   errors = [],
-  buttonLabel = 'OK, Take me to the First Error',
+  buttonLabel = 'OK, take me to the first error',
   onConfirm,
   className = '',
 }) {

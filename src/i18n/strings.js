@@ -23,6 +23,23 @@ const FIGMA_FIXES = {
   // 한국어 화면의 현재 언어가 "영어"로 되어 있음 → "국어" (button2-2 국문 값과 같게)
   // (LanguageSelect는 목록 값 button2-1·button2-2를 쓰므로 지금은 참고용)
   Current_Lang: { ko: '국어' },
+  // 표기 통일 (오타 점검 2026-11-17)
+  // 콜론 앞 띄어쓰기 없앰 — 다른 제목("확장팩: 아티스틱 리서치")과 같게
+  Imagecard_head1: { en: 'Green Green Museum: Sensory Notes', ko: '그린 그린 뮤지엄: 센서리 노트' },
+  Imagecard_Title2: { ko: '2026 경기공유학교 <SUMA X 미술관사람들2>: 큐레이터 & 전시디자이너' },
+  // "그린그린" → "그린 그린", 》 뒤 띄어쓰기
+  Imagecard_Title5: { ko: '《그린 그린 뮤지엄 2부: 감각 노트》 특별 워크숍 <미술관 소풍>' },
+  // 대상 필터·태그: "Child"(단수)와 "Adults"(복수)가 섞여 있음 → 단수로 통일
+  Main_Button3: { en: 'Adult' },
+  Imagecard_Caption2: { en: 'Adult' },
+  // "play time"은 뜻이 통하지 않음 → 운영 시간 안에서 고르라는 뜻으로
+  Message_body_title8: { en: 'Enter Time (within opening hours)', ko: '시간 입력 (운영 시간 내)' },
+  // 문장 중간 단어마다 대문자 → 문장형 대소문자
+  Message_button3: { en: 'OK, take me to the first error' },
+  // 팝업 제목 국문을 영문 "Select Date & Time"과 같은 뜻으로
+  Message_title3: { ko: '관람 일시 선택' },
+  // 다른 곳은 모두 "날짜 & 시간 선택" (지금 화면에는 안 쓰임)
+  'cancel_date&time': { ko: '날짜 & 시간 선택' },
 };
 
 // Figma 변수에 없는 문구 (화면낭독기용 이름표 등)
@@ -51,7 +68,7 @@ const CODE_STRINGS = {
   visitorsIncrease: { en: 'Increase visitors', ko: '인원 늘리기' },
   // 메인 배너 자동 슬라이드 (화면낭독기용)
   bannerSliderLabel: { en: 'Featured exhibitions', ko: '주요 전시 배너' },
-  bannerGoTo: { en: 'Go to banner {n}', ko: '배너 {n}번째 보기' },
+  bannerGoTo: { en: 'Go to banner {n}', ko: '{n}번째 배너 보기' },
   // 푸터 (실제 사이트 하단 기준, 영문 번역안 승인 2026-11-09)
   footerPolicyLabel: { en: 'Site policies', ko: '이용 정책' },
   footerPrivacy: { en: 'Privacy Policy', ko: '개인정보처리방침' },

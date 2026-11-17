@@ -4,7 +4,7 @@ import './ExhibitionType.css';
  * ExhibitionType — Figma "전시타입" (node 879:6295)
  * 프로그램 대상을 보여 주는 태그
  *   Property 1=Child  → 초록 계열, 글자 "Child"
- *   Property 1=Adult  → 파랑 계열, 글자 "Adults"
+ *   Property 1=Adult  → 파랑 계열, 글자 "Adult" (Figma "Adults" → "Child"와 맞춰 단수로)
  *   Property 1=Family → 초록 계열, 글자 "Family", 최소 너비 64px
  *
  * @param {'Child'|'Adult'|'Family'} type  태그 종류
@@ -12,7 +12,7 @@ import './ExhibitionType.css';
  */
 const LABELS = {
   Child: 'Child',
-  Adult: 'Adults',
+  Adult: 'Adult',
   Family: 'Family',
 };
 

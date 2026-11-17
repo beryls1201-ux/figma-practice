@@ -6,7 +6,7 @@ import './MainInfoCards.css';
 /**
  * MainInfoCards — Figma "메인-정보카드" (데스크탑 node 879:5439 / 모바일 node 879:5488)
  * 페이지 제목(세부페이지제목) + 필터 탭(하위메뉴) + 정보카드 목록(프로그램-정보카드모음)
- *   Property 1=All·Child·Adults·Family → 선택한 필터. 누르면 해당 대상 카드만 보임
+ *   Property 1=All·Child·Adult·Family → 선택한 필터. 누르면 해당 대상 카드만 보임
  *   데스크탑(768px 이상): 3열, 필터 아래 구분선 / 모바일: 1열, 구분선 없음
  *
  * @param {string} title     페이지 제목 (기본 "Programs & Workshops")
@@ -22,7 +22,7 @@ const FILTERS = ['All', 'Child', 'Adult', 'Family'];
 const DEFAULT_FILTER_LABELS = {
   All: 'All',
   Child: 'Child',
-  Adult: 'Adults',
+  Adult: 'Adult',
   Family: 'Family',
 };
 
